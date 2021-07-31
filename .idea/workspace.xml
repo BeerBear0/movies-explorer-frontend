@@ -2,29 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ecf652d-0d0e-45ce-96f9-d656180f9da7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Main/AboutMe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Main/AboutProject.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Main/NavTab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Main/Portfolio.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Main/Promo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Main/Techs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Movies.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Movies/MoviesCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Movies/MoviesCardList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Movies/Preloader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Movies/SearchForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navigation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Register.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SavedMovies.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +54,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627724776662</updated>
-      <workItem from="1627724781543" duration="3758000" />
+      <workItem from="1627724781543" duration="5699000" />
     </task>
     <servers />
   </component>
