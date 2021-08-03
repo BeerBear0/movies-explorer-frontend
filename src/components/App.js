@@ -1,4 +1,4 @@
-import Route from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Main from './Main';
 import Movies from './Movies';
 import SavedMovies from './SavedMovies';
@@ -13,8 +13,8 @@ import Footer from './Footer';
 function App() {
   return (
 <>
-  <Header />
-  <Navigation />
+  {/*<Header />*/}
+  {/*<Navigation />*/}
    <Route path='/'>
      <Main />
    </Route>
@@ -33,7 +33,7 @@ function App() {
   <Route path='/signup'>
     <Register />
   </Route>
-  <Footer />
+  {/*<Footer />*/}
 </>
   );
 }

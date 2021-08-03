@@ -17,6 +17,11 @@ import Techs from './Main/Techs';
 function Main (props) {
     return (
         <>
+            <Promo />
+            <AboutProject />
+            <Techs />
+            <AboutMe />
+            <Portfolio />
         </>
     )
 }
