@@ -2,25 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ecf652d-0d0e-45ce-96f9-d656180f9da7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/const.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/AboutMe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AboutMe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/AboutProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AboutProject.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/NavTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/NavTab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Portfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Portfolio.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/Promo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Promo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Techs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Techs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Movies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Movies.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SavedMovies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SavedMovies.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +69,7 @@
       <workItem from="1627724781543" duration="21296000" />
       <workItem from="1627857024709" duration="22000" />
       <workItem from="1627872131009" duration="7762000" />
-      <workItem from="1627944448842" duration="8808000" />
+      <workItem from="1627944448842" duration="11638000" />
     </task>
     <servers />
   </component>

@@ -13,6 +13,7 @@
   /*width: 1280px;*/
   /*height: 442px;*/
   /*padding-top: 82px;*/
+  padding: 82px 0 122px 0;
 }
 
 .promo__image {
@@ -22,7 +23,7 @@
   background-image: url("./images/promoImg.png");
   background-repeat: no-repeat;
   background-position: center;
-  margin: 82px auto;
+  margin: 0 auto;
 }
 
 .promo__title {
@@ -57,12 +58,12 @@
   width: 38px;
   height: 38px;
 }
-.header__nav {
+.navigation {
   display: flex;
   /*justify-content: center;*/
   /*justify-self: center;*/
 }
-.header__link {
+.navigation__link {
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -74,7 +75,7 @@
   margin: 29px 0 29px 0;
   text-decoration: none;
 }
-.header__link-div {
+.navigation__link-div {
   background-color: #2BE080;
   margin:21px 70px 21px 30px;
   width: 76px;
@@ -84,14 +85,12 @@
   justify-content: center;
   align-items: center;
 }
-.header__link_login {
 
-}
 .header-promo {
   background-color: #073042;
 }
 
-.navigation {
+.navtab {
   width: 100%;
   height: 66px;
   color: white;
@@ -100,15 +99,15 @@
   justify-content: center;
 }
 
-.navigation__links {
-  /*width: 276px;*/
+.navtab__links {
+  width: 276px;
   display: flex;
   justify-content: center;
   align-items: center;
   /*justify-self: center;*/
 }
 
-.navigation__link {
+.navtab__link {
   /*margin: 24px 40px 24px 0;*/
   margin-right: 40px;
   font-style: normal;
@@ -120,7 +119,7 @@
   text-decoration-line: underline;
 }
 
-.navigation__link:last-of-type {
+.navtab__link:last-of-type {
   margin: 0;
 }
 .project {
