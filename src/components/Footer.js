@@ -4,12 +4,14 @@ function Footer(){
             <div className='footer__description'>
                 <p className='footer__text'>Учебный проект Яндекс.Практикум х BeatFilm.</p>
             </div>
-            <p className='footer__data'>2020</p>
-            <nav className='footer_nav'>
-                <a className='footer_link'>Яндекс.Практикум</a>
-                <a className='footer_link'>Github</a>
-                <a className='footer_link'>Facebook</a>
-            </nav>
+            <div className='footer__container'>
+                <p className='footer__data'>2020</p>
+                <nav className='footer__nav'>
+                    <a href='https://praktikum.yandex.ru/' className='footer__link'>Яндекс.Практикум</a>
+                    <a href='https://github.com/BeerBear0' className='footer__link'>Github</a>
+                    <a href='https://vk.com/n1kk0_00' className='footer__link'>VK</a>
+                </nav>
+            </div>
         </div>
     )
 }
