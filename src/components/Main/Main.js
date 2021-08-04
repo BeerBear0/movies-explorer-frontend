@@ -8,14 +8,14 @@
 // import {headerHref1, headerHref2} from '../utils/const';
 
 import React from 'react';
-import AboutMe from './Main/AboutMe';
-import AboutProject from './Main/AboutProject';
-import NavTab from './Main/NavTab';
-import Portfolio from './Main/Portfolio';
-import Promo from './Main/Promo';
-import Techs from './Main/Techs';
-import Header from "./Header";
-import Footer from "./Footer";
+import AboutMe from '../AboutMe/AboutMe';
+import AboutProject from '../AboutProject/AboutProject';
+import NavTab from '../NavTab/NavTab';
+import Portfolio from '../Portfolio/Portfolio';
+import Promo from '../Promo/Promo';
+import Techs from '../Techs/Techs';
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function Main (props) {
     return (

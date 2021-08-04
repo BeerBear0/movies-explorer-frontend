@@ -1,0 +1,27 @@
+.promo {
+    background-color: #073042;
+    padding: 82px 0 122px 0;
+}
+
+.promo__image {
+    width: 720px;
+    height: 320px;
+    opacity: .8;
+    background-image: url("../../images/promoImg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+}
+
+.promo__title {
+    /*max-width: 720px;*/
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 58px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    padding-top: 82px;
+    margin: 0;
+}

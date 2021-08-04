@@ -1,5 +1,5 @@
-import Navigation from "./Navigation";
-import {headerHref1, headerHref2} from "../utils/const";
+import Navigation from "../Navigation/Navigation";
+import {headerHref1, headerHref2} from "../../utils/const";
 
 function Header (){
     return(

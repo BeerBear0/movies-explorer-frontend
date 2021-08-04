@@ -1,0 +1,25 @@
+.navigation {
+    display: flex;
+}
+.navigation__link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #FFFFFF;
+    margin: 29px 0 29px 0;
+    text-decoration: none;
+}
+.navigation__link-div {
+    background-color: #2BE080;
+    margin:21px 70px 21px 30px;
+    width: 76px;
+    height: 32px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
