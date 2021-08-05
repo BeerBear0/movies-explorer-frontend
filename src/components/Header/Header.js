@@ -11,7 +11,7 @@ function Header (){
                 headerHref1={headerHref1}
                 headerHref2={headerHref2}
                 linkNum1='Регистрация'
-                linkNum2='Вход'
+                linkNum2='Войти'
             />
         </div>
     )

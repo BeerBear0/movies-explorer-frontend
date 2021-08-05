@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies';
 import SavedMovies from '../SavedMovies';
-import Register from '../Register';
+import Register from '../Register/Register';
 import Login from '../Login';
 import Profile from '../Profile';
 import Header from '../Header/Header';

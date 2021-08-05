@@ -1,6 +1,7 @@
 function AboutMe (props) {
   return (
      <div className='aboutme'>
+         <a name='aboutme' />
          <h3 className='project__title'>Студент</h3>
          <div className='aboutme__container'>
              <div className='aboutme__description'>

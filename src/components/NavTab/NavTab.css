@@ -30,3 +30,9 @@
 .navtab__link:last-of-type {
     margin: 0;
 }
+
+@media (max-width: 425px) {
+    .navtab__link {
+        margin-right: 25px;
+    }
+}

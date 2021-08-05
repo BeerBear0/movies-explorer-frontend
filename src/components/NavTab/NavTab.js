@@ -2,9 +2,9 @@ function NavTab (){
     return (
         <div className='navtab'>
             <nav className='navtab__links'>
-                <a className='navtab__link'>О проекте</a>
-                <a className='navtab__link'>Технологии</a>
-                <a className='navtab__link'>Студент</a>
+                <a href='#aboutProject' className='navtab__link'>О проекте</a>
+                <a href='#techs' className='navtab__link'>Технологии</a>
+                <a href='#aboutme' className='navtab__link'>Студент</a>
             </nav>
         </div>
     )

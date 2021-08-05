@@ -58,3 +58,54 @@
     border-radius: 10px;
     margin: 66px 0 auto auto;
 }
+@media (max-width: 1024px) {
+    .aboutme {
+        padding: 90px 50px 90px 50px;
+    }
+    .aboutme__description {
+        max-width: 364px;
+    }
+    .aboutme__text {
+        margin-bottom: 87px;
+    }
+    .aboutme__photo {
+        margin-left: 49px;
+    }
+}
+
+@media (max-width: 425px) {
+    .aboutme {
+        padding: 70px 15px 70px 15px;
+    }
+    .aboutme__container {
+        display: grid;
+    }
+
+    .aboutme__description {
+        max-width: 292px;
+        grid-row: 2;
+        margin: 0 auto;
+    }
+    .aboutme__title {
+        font-size: 30px;
+        line-height: 36px;
+        margin: 0 0 20px 0;
+    }
+    .aboutme__work {
+        font-size: 11px;
+        line-height: 16px;
+    }
+    .aboutme__text {
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 40px;
+    }
+    .aboutme__link {
+        margin-right: 26px;
+    }
+    .aboutme__photo {
+        grid-row: 1;
+        margin: 60px auto 0 auto;
+        width: 292px;
+    }
+}

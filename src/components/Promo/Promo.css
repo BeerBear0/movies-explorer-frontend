@@ -25,3 +25,38 @@
     padding-top: 82px;
     margin: 0;
 }
+
+@media (max-width: 1280px) {
+    .promo {
+        padding: 224px 50px 240px 50px;
+    }
+
+}
+@media (max-width: 767px) {
+    .promo {
+        padding: 142px 10px 180px 10px;
+    }
+    .promo__title {
+        /*max-width: px;*/
+        font-size: 31px;
+        line-height: 39px;
+    }
+    .promo__image {
+        width: 500px;
+        height: 248px;
+        background-size: contain;
+
+    }
+}
+
+@media (max-width: 522px) {
+    .promo__image {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 424px) {
+    .promo__image {
+        max-width: 300px;
+    }
+}

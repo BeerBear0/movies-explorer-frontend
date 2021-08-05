@@ -2,6 +2,7 @@
 .project {
     padding: 110px 70px 110px 70px;
 }
+
 .project__title {
     font-style: normal;
     font-weight: normal;
@@ -42,18 +43,26 @@
 }
 .project__graphic {
     display: flex;
+    width: 100%;
 }
 .project__graphic-one {
     background-color: #2BE080;
-    max-width: 228px;
-    height: 27px;
+    width: 228px;
+    height: 36px;
+    /*margin: 9px auto;*/
     /*display: flex;*/
     /*justify-content: center;*/
     /*flex-direction: column;*/
-    padding: 9px 14px 0 14px;
+    /*padding: 9px 14px 0 14px;*/
+}
+.project__graphic-two {
+    background-color: #F2F2F2;
+    width: 912px;
+    height: 36px;
+    /*padding: 9px 356px 0 356px;*/
 }
 .project__graphic-text {
-    width: 200px;
+    /*width: 200px;*/
     height: 18px;
     text-align: center;
     font-style: normal;
@@ -61,7 +70,7 @@
     font-size: 14px;
     line-height: 17px;
     color: #000000;
-    margin: 0;
+    margin: 9px auto;
 }
 .project__graphic-description {
     font-style: normal;
@@ -70,12 +79,53 @@
     line-height: 17px;
     text-align: center;
     color: #A0A0A0;
-    margin-top: 23px;
-    width: 200px;
+    /*margin-top: 23px;*/
+    /*width: 200px;*/
+    margin: 23px auto 0 auto;
 }
-.project__graphic-two {
-    background-color: #F2F2F2;
-    width: 912px;
-    height: 27px;
-    padding: 9px 356px 0 356px;
+
+
+@media (max-width: 1280px) {
+    .project {
+        padding: 90px 50px 90px 50px;
+    }
+    .project__graphic-text {
+        width: 115px;
+        /*margin-right: -80px;*/
+    }
+    .project__graphic-one {
+        width: 140px;
+        /*padding: 9px 10px 0 10px;*/
+    }
+}
+@media (max-width: 425px) {
+    .project {
+        padding: 70px 20px 100px 20px;
+    }
+    .project__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .project__graphic-one {
+        width: 100px;
+    }
+    .project__container {
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+    .project__description {
+        width: 284px;
+    }
+    .project__description-title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .project__description-text {
+        font-size: 11px;
+        line-height: 16px;
+    }
+    .project__graphic-description {
+        width: 100px;
+        margin-top: 20px;
+    }
 }

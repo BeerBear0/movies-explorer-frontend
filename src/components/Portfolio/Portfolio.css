@@ -26,9 +26,40 @@
     width: 100%;
 }
 .portfolio__link_arrow {
-    background-image: url("./images/arrow-min.png");
+    background-image: url("../../images/arrow-min.png");
     width: 30px;
     height: 60px;
     background-repeat: no-repeat;
     background-position: center;
+}
+@media (max-width: 1280px) {
+    .portfolio {
+        padding: 0 50px 90px 50px;
+    }
+}
+
+@media (max-width: 425px) {
+    .portfolio {
+        padding: 0 15px 70px 15px;
+    }
+    .portfolio__title {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .portfolio__links {
+        margin-bottom: 20px;
+    }
+    .portfolio__links:last-of-type {
+        margin-bottom: 0;
+    }
+    .portfolio__link {
+        font-size: 18px;
+        line-height: 28px;
+        padding-bottom: 20px;
+    }
+    .portfolio__link_arrow {
+        width: 15px;
+        height: 15px;
+        background-size: contain;
+    }
 }
