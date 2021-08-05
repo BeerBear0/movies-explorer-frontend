@@ -10,6 +10,7 @@
 @import url(./components/Promo/Promo.css);
 @import url(./components/Techs/Techs.css);
 @import url(./components/Register/Register.css);
+@import url(./components/NotFound/NotFound.css);
 
 html {
   max-width: 1280px;
