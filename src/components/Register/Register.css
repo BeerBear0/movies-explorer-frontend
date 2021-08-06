@@ -1,0 +1,61 @@
+.register {
+    display: grid;
+    width: 396px;
+    margin: 0 auto;
+}
+.register__logo {
+    margin: 70px auto 40px 0;
+}
+.register__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    margin-bottom: 40px;
+}
+.register__span {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #A0A0A0;
+    margin-bottom: 10px;
+}
+.register__input {
+    width: 396px;
+    height: 46px;
+    border: none;
+    background-color: #F9F9F9;
+    margin-bottom: 20px;
+}
+.register__btn {
+    width: 396px;
+    height: 45px;
+    border: none;
+    background-color: #3456F3;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 70px auto 16px auto;
+}
+.register__text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #A0A0A0;
+    margin: 0 auto 70px auto;
+}
+.register__link {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #3456F3;
+}
