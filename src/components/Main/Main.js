@@ -20,7 +20,6 @@ import Footer from "../Footer/Footer";
 function Main (props) {
     return (
         <>
-            <Header />
             <Promo />
             <NavTab />
             <AboutProject />

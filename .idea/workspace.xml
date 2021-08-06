@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ecf652d-0d0e-45ce-96f9-d656180f9da7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Auth-form/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth-form/Register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/Profile.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Register/Register.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth-form/Auth-form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Register/Register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Promo/Promo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Promo/Promo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Promo/Promo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Promo/Promo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,11 +62,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\Profile" />
+      <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components" />
       <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\Auth-form" />
       <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\Login" />
       <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\NotFound" />
-      <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\Register" />
-      <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\Main" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -81,7 +85,7 @@
       <workItem from="1628036483783" duration="4322000" />
       <workItem from="1628146631845" duration="646000" />
       <workItem from="1628150970320" duration="22330000" />
-      <workItem from="1628244826656" duration="6959000" />
+      <workItem from="1628244826656" duration="13993000" />
     </task>
     <servers />
   </component>

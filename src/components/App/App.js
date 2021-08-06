@@ -4,7 +4,7 @@ import Movies from '../Movies';
 import SavedMovies from '../SavedMovies';
 import Register from '../Auth-form/Register';
 import Login from '../Auth-form/Login';
-import Profile from '../Profile';
+import Profile from '../Profile/Profile';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
@@ -33,7 +33,7 @@ function App() {
   <Route path='/signup'>
     <Register />
   </Route>
-  <Footer />
+  {/*<Footer />*/}
 </>
   );
 }
