@@ -4,9 +4,7 @@ import {headerHref1, headerHref2} from "../../utils/const";
 function Header (){
     return(
         <div className='header'>
-            <div  className='header__logo'>
-                <div className='header__img' />
-            </div>
+            <div  className='header__logo' />
             <Navigation
                 headerHref1={headerHref1}
                 headerHref2={headerHref2}
