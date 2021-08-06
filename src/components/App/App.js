@@ -2,8 +2,8 @@ import { Route } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies';
 import SavedMovies from '../SavedMovies';
-import Register from '../Register/Register';
-import Login from '../Login';
+import Register from '../Auth-form/Register';
+import Login from '../Auth-form/Login';
 import Profile from '../Profile';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
@@ -33,7 +33,7 @@ function App() {
   <Route path='/signup'>
     <Register />
   </Route>
-  {/*<Footer />*/}
+  <Footer />
 </>
   );
 }
