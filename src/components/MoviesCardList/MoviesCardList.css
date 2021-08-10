@@ -1,0 +1,23 @@
+.card-list {
+    padding: 70px 70px 10px 70px;
+}
+.card-list__grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+    row-gap: 40px;
+}
+
+.card-list__btn {
+    margin-top: 50px;
+    width: 100%;
+    background-color: #f9f9f9;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #000000;
+    border: none;
+    outline: none;
+}

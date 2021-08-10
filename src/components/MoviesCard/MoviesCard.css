@@ -1,0 +1,40 @@
+.card {
+    width: 270px;
+}
+.card__image {
+    width: 270px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-bottom: 17px;
+}
+.card__container {
+    display: flex;
+}
+
+.card__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    margin: 0  0 0 16px;
+}
+
+.card__time {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    align-items: center;
+    color: #A0A0A0;
+    margin: 17px 0 0 16px;
+}
+.card__like {
+    width: 14px;
+    height: 12px;
+    background-image: url("../../images/like-min.png");
+    margin: auto 24px auto auto;
+}
+.card__like_active {
+    background-image: url("../../images/likeActive-min.png");
+}

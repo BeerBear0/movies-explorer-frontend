@@ -1,6 +1,6 @@
 import SearchForm from "./SearchForm/SearchForm";
 import Preloader from "./Movies/Preloader";
-import MoviesCardList from "./Movies/MoviesCardList";
+import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import MoviesCard from "./MoviesCard/MoviesCard";
 import Header from "./Header/Header";
 
@@ -11,7 +11,7 @@ function Movies (props){
             <SearchForm />
             <Preloader />
             <MoviesCardList />
-            <MoviesCard />
+            {/*<MoviesCard />*/}
         </>
     )
 
