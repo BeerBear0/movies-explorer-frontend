@@ -13,6 +13,9 @@
     margin: 29px 0 29px 0;
     text-decoration: none;
 }
+.navigation__link_loggedin {
+    color: black;
+}
 .navigation__link-color{
     color: black;
 }
@@ -25,6 +28,9 @@
     justify-content: center;
     align-items: center;
     border-radius: 3px;
+}
+.navigation__link-div_loggedin {
+    background-color: white;
 }
 .navigation__account {
     text-decoration: none;

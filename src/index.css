@@ -12,6 +12,7 @@
 @import url(components/Auth-form/Auth-form.css);
 @import url(./components/NotFound/NotFound.css);
 @import url(./components/Profile/Profile.css);
+@import url(./components/SearchForm/SearchForm.css);
 
 html {
   max-width: 1280px;

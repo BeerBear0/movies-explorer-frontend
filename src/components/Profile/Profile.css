@@ -47,14 +47,35 @@
     margin-bottom: 210px;
 }
 
-.profile__edit-btn {
+.profile__btn {
     width: 410px;
     text-align: center;
+    border: none;
+    background-color: white;
 }
-.profile__exit-btn {
-    width: 410px;
-    text-align: center;
+.profile__btn_exit {
+    margin-top: 16px;
+    color: #FF004D;
 }
-.profile__container_btn {
-    display: grid;
+
+@media (max-width: 768px) {
+   .profile {
+       margin-top: 236px;
+       margin-bottom: 270px;
+   }
+}
+
+@media (max-width: 525px) {
+    .profile {
+        margin: 70px 30px 40px 30px;
+    }
+    .profile__container {
+        width: 260px;
+        margin: 0;
+    }
+    .profile__title {
+        margin: 0;
+        width: 100%;
+    }
+    /*.profile__*/
 }

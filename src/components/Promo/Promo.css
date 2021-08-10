@@ -1,6 +1,6 @@
 .promo {
     background-color: #073042;
-    padding: 82px 0 0 0;
+    padding-bottom: 122px;
 }
 
 .promo__image {
@@ -10,7 +10,7 @@
     background-image: url("../../images/promoImg.png");
     background-repeat: no-repeat;
     background-position: center;
-    margin: 122px auto 0 auto;
+    margin: 82px auto 0 auto;
 }
 
 .promo__title {
