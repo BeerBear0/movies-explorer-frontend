@@ -9,6 +9,9 @@
 }
 .card__container {
     display: flex;
+    /*border-bottom: 1px solid #E8E8E8;*/
+    /*padding-bottom: 29px;*/
+    /*margin-bottom: 6px;*/
 }
 
 .card__title {
@@ -17,7 +20,7 @@
     font-size: 13px;
     line-height: 16px;
     color: #000000;
-    margin: 0  0 0 16px;
+    margin: 0 0 17px 16px;
 }
 
 .card__time {
@@ -27,7 +30,7 @@
     line-height: 13px;
     align-items: center;
     color: #A0A0A0;
-    margin: 17px 0 0 16px;
+    margin: 0 0 0 16px;
 }
 .card__like {
     width: 14px;
@@ -37,4 +40,37 @@
 }
 .card__like_active {
     background-image: url("../../images/likeActive-min.png");
+}
+
+@media (max-width: 768px) {
+    .card {
+       width: 339px;
+    }
+    .card__image {
+        width: 339px;
+        margin-bottom: 14px;
+    }
+    .card__title {
+        margin: 0 0 15px 14px;
+    }
+    .card__time {
+        margin-left: 14px;
+    }
+}
+
+@media (max-width: 425px){
+    .card {
+        width: 300px;
+    }
+    .card__image {
+        width: 300px;
+    }
+    .card__title {
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .card__time {
+        font-size: 10px;
+        line-height: 12px;
+    }
 }

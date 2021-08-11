@@ -10,7 +10,6 @@ function MoviesCard ({ movie }) {
                 <div className='card__like card__like_active' />
             </div>
             <p className='card__time'>{movie.duration}</p>
-
         </div>
     )
 }
