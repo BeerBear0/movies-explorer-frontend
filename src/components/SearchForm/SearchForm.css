@@ -34,9 +34,21 @@
     border: none;
 
 }
+.search-form__checkbox-container {
+    display: flex;
+}
  .search-form__checkbox {
      margin: auto auto auto 30px;
+     background-image: url("../../images/checkboxdisab-min.png");
+     width: 36px;
+     height: 20px;
+     appearance: none;
+     -moz-appearance: none;
+     -webkit-appearance: none;
 }
+ .search-form__checkbox:checked {
+     background-image: url("../../images/checkboxactiv-min.png");
+ }
  .search-form__checkbox-text {
      font-style: normal;
      font-weight: normal;

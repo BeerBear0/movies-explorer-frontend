@@ -16,9 +16,7 @@
 .navigation__link_loggedin {
     color: black;
 }
-.navigation__link-color{
-    color: black;
-}
+
 .navigation__link-div {
     background-color: #2BE080;
     margin:21px 70px 21px 30px;
@@ -31,7 +29,9 @@
 }
 .navigation__link-div_loggedin {
     background-color: white;
+    width: 135px;
 }
+
 .navigation__account {
     text-decoration: none;
     color: black;

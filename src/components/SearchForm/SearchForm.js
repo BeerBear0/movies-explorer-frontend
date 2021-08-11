@@ -6,11 +6,13 @@ function SearchForm (props) {
                 <div className='search-form__btn-container'>
                     <button className='search-form__btn'>Найти</button>
                 </div>
+                <div className='search-form__checkbox-container'>
                  <input
                     type='checkbox'
                     className='search-form__checkbox'
                  />
-                 <p className='search-form__checkbox-text'>Короткометражки</p>
+                 <span className='search-form__checkbox-text'>Короткометражки</span>
+                </div>
             </div>
         </div>
     )

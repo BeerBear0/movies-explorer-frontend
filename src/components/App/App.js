@@ -1,4 +1,5 @@
-import { Route } from 'react-router-dom';
+import React from 'react';
+import {Route, Switch, useHistory} from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies';
 import SavedMovies from '../SavedMovies';
@@ -11,28 +12,31 @@ import Footer from '../Footer/Footer';
 import NotFound from '../NotFound/NotFound';
 
 function App() {
-  return (
+
+    return (
 <>
   {/*<Header />*/}
+  <Switch>
   {/*<Navigation />*/}
-   <Route path='/'>
-     <Main />
-   </Route>
-   <Route path='/movies'>
-     <Movies />
-   </Route>
-   <Route path='/saved-movies'>
-     <SavedMovies />
-   </Route>
-   <Route path='/profile'>
-    <Profile />
-   </Route>
-  <Route path='/signin'>
-    <Login />
-  </Route>
-  <Route path='/signup'>
-    <Register />
-  </Route>
+        <Route exact path='/'>
+            <Main />
+        </Route>
+        <Route path='/signin'>
+            <Login />
+        </Route>
+        <Route path='/signup'>
+            <Register />
+        </Route>
+        <Route path='/saved-movies'>
+          <SavedMovies />
+        </Route>
+        <Route path='/movies'>
+            <Movies />
+        </Route>
+        <Route path='/profile'>
+         <Profile />
+        </Route>
+  </Switch>
   {/*<Footer />*/}
 </>
   );
