@@ -12,6 +12,8 @@ import Footer from '../Footer/Footer';
 import NotFound from '../NotFound/NotFound';
 
 function App() {
+    // временно авторизация на тру
+    const isLoginIn = true;
 
     return (
 <>
@@ -19,7 +21,7 @@ function App() {
   <Switch>
   {/*<Navigation />*/}
         <Route exact path='/'>
-            <Main />
+            <Main isLoginIn={isLoginIn}/>
         </Route>
         <Route path='/signin'>
             <Login />
@@ -28,13 +30,13 @@ function App() {
             <Register />
         </Route>
         <Route path='/saved-movies'>
-          <SavedMovies />
+          <SavedMovies loggedIn={isLoginIn} />
         </Route>
         <Route path='/movies'>
-            <Movies />
+            <Movies loggedIn={isLoginIn} />
         </Route>
         <Route path='/profile'>
-         <Profile />
+         <Profile loggedIn={isLoginIn} />
         </Route>
   </Switch>
   {/*<Footer />*/}

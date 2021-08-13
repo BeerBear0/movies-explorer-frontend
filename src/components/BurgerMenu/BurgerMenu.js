@@ -23,7 +23,6 @@ function BurgerMenu () {
             <div className={`burger-menu__icon ${burgerMenuDisplay ? 'burger-menu__icon_active' : ''}`}
                  onClick={toggleBurgerMenu}
             >
-                {/*<span className={`burger-menu__icon-line ${burgerMenuDisplay ? 'burger__menu__icon-line_active' : ''}`} />*/}
             </div>
         </>
     )

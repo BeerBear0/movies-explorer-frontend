@@ -14,13 +14,14 @@ import NavTab from '../NavTab/NavTab';
 import Portfolio from '../Portfolio/Portfolio';
 import Promo from '../Promo/Promo';
 import Techs from '../Techs/Techs';
-import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-function Main (props) {
+function Main ({isLoginIn}) {
     return (
         <>
-            <Promo />
+            <Promo
+                isLoginIn={isLoginIn}
+            />
             <NavTab />
             <AboutProject />
             <Techs />

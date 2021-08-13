@@ -43,7 +43,11 @@
     text-align: center;
     margin: 21px 70px 21px auto;
 }
-
+@media (max-width: 768px) {
+    .navigation__display {
+        display: none;
+    }
+}
 @media (max-width: 425px) {
     .navigation__link-div {
         margin: 24px 14px 24px 14px;
