@@ -1,6 +1,5 @@
 import Navigation from "../Navigation/Navigation";
-// import {headerHref1, headerHref2} from "../../utils/const";
-
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 function Header ({linkNum1, linkNum2, headerHref1, headerHref2}){
     return(
         <div className='header'>
@@ -11,6 +10,7 @@ function Header ({linkNum1, linkNum2, headerHref1, headerHref2}){
                 linkNum1={linkNum1}
                 linkNum2={linkNum2}
             />
+            <BurgerMenu />
         </div>
     )
 }

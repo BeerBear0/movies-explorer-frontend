@@ -1,5 +1,6 @@
 .card {
     width: 270px;
+    margin: 0 auto;
 }
 .card__image {
     width: 270px;
@@ -30,7 +31,7 @@
     line-height: 13px;
     align-items: center;
     color: #A0A0A0;
-    margin: 0 0 0 16px;
+    margin: 0 0 14px 16px;
 }
 .card__like {
     width: 14px;
@@ -72,5 +73,6 @@
     .card__time {
         font-size: 10px;
         line-height: 12px;
+
     }
 }
