@@ -1,4 +1,4 @@
-import Movies from "../components/Movies";
+import Movies from "../components/Movies/Movies";
 
 export const headerHref1 = '/signup';
 // export const headerHref1 = 'https://movies.nikko.nomoredomains.monster/signup';

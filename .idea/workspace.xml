@@ -20,18 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ecf652d-0d0e-45ce-96f9-d656180f9da7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/SavedMovies/SavedMovies.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BurgerMenu/BurgerMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BurgerMenu/BurgerMenu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BurgerMenu/BurgerMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BurgerMenu/BurgerMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Movies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Movies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Movies/CheckBox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Movies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Movies/Movies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Movies/Preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Preloader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MoviesCard/MoviesCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MoviesCard/MoviesCard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Promo/Promo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Promo/Promo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MoviesCard/MoviesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MoviesCard/MoviesCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SavedMovies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SavedMovies/SavedMovies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchForm/SearchForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchForm/SearchForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/const.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/const.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +78,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\SavedMovies" />
+      <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\Movies" />
+      <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components" />
       <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\MoviesCardList" />
       <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\MoviesCard" />
-      <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\Profile" />
-      <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components" />
-      <recent name="C:\Users\Ник\dev\movies-explorer-frontend\src\components\Auth-form" />
     </key>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
@@ -110,7 +108,7 @@
       <workItem from="1628414651598" duration="2694000" />
       <workItem from="1628554394455" duration="12995000" />
       <workItem from="1628645441228" duration="12021000" />
-      <workItem from="1628837533059" duration="15478000" />
+      <workItem from="1628837533059" duration="19258000" />
     </task>
     <servers />
   </component>

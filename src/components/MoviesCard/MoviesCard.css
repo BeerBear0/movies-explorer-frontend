@@ -34,10 +34,25 @@
     width: 14px;
     height: 12px;
     background-image: url("../../images/like-min.png");
+    background-repeat: no-repeat;
+    background-position: center;
     margin: auto 24px auto auto;
+    cursor: pointer;
 }
 .card__like_active {
     background-image: url("../../images/likeActive-min.png");
+}
+.card__delete {
+    /*display: none;*/
+    background-image: url("../../images/delete-card-min.png");
+    width: 9px;
+    height: 9px ;
+}
+.card__delete:hover {
+    display: block;
+}
+.card:hover+.card__delete {
+    display: block;
 }
 
 @media (max-width: 768px) {
