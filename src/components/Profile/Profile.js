@@ -1,3 +1,6 @@
+import React from 'react';
+import './Profile.css';
+
 import Header from "../Header/Header";
 function Profile (props){
     return (
@@ -19,8 +22,8 @@ function Profile (props){
                     <p className='profile__edit profile__edit-email'>chelovek@chelovek.ru</p>
                 </div>
 
-                    <button className='profile__btn profile__btn_edit'>Редактировать</button>
-                    <button className='profile__btn profile__btn_exit'>Выйти из аккаунта</button>
+                <button className='profile__btn profile__btn_edit'>Редактировать</button>
+                <button className='profile__btn profile__btn_exit'>Выйти из аккаунта</button>
 
             </div>
         </>

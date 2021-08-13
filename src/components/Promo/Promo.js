@@ -1,4 +1,5 @@
 import React from 'react';
+import './Promo.css';
 import Header from "../Header/Header";
 
 function Promo({isLoginIn}) {

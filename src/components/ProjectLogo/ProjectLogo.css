@@ -1,0 +1,8 @@
+.project-logo {
+  margin: 0;
+  transition: transform 0.5s;
+}
+
+.project-logo:hover {
+  transform: scale(1.2) rotate(90deg);
+}

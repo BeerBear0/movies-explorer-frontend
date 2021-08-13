@@ -1,3 +1,6 @@
+import React from 'react';
+import './Auth-form.css';
+import {NavLink} from "react-router-dom";
 function Register (props){
     return (
         <div className='auth-form'>
@@ -21,8 +24,9 @@ function Register (props){
                 type='password'
                 placeholder='Введите пароль'
             />
+            <span className='auth-form__error auth-form__error_active'>Что-то пошло не так</span>
             <button className='auth-form__btn'>Зарегистрироваться</button>
-            <p className='auth-form__text'>Уже зарегистрированы? <a href='/signin' className='register__link'>Войти</a></p>
+            <p className='auth-form__text'>Уже зарегистрированы? <NavLink to='/signin' className='auth-form__link'>Войти</NavLink></p>
         </div>
     )
 }

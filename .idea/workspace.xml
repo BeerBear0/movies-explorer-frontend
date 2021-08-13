@@ -20,18 +20,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ecf652d-0d0e-45ce-96f9-d656180f9da7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Preloader/Preloader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Preloader/Preloader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SavedMovies/SavedMovies.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutMe/AboutMe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutMe/AboutMe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutProject/AboutProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutProject/AboutProject.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Movies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Movies/Movies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Movies/Preloader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MoviesCard/MoviesCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MoviesCard/MoviesCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth-form/Auth-form.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth-form/Auth-form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth-form/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth-form/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth-form/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth-form/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BurgerMenu/BurgerMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BurgerMenu/BurgerMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Movies/Movies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Movies/Movies.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MoviesCard/MoviesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MoviesCard/MoviesCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SavedMovies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SavedMovies/SavedMovies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchForm/SearchForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchForm/SearchForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/const.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/const.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MoviesCardList/MoviesCardList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MoviesCardList/MoviesCardList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MoviesCardList/MoviesCardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MoviesCardList/MoviesCardList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavTab/NavTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavTab/NavTab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NotFound/NotFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NotFound/NotFound.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Portfolio/Portfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Portfolio/Portfolio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Promo/Promo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Promo/Promo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SavedMovies/SavedMovies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SavedMovies/SavedMovies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchForm/SearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchForm/SearchForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Techs/Techs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Techs/Techs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/delete-card-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +124,7 @@
       <workItem from="1628414651598" duration="2694000" />
       <workItem from="1628554394455" duration="12995000" />
       <workItem from="1628645441228" duration="12021000" />
-      <workItem from="1628837533059" duration="19610000" />
+      <workItem from="1628837533059" duration="27055000" />
     </task>
     <servers />
   </component>
@@ -130,10 +144,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1628864001805">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1628864001805" />
     <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1628650115273">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1628650115273" />
+    <state x="390" y="0" width="585" height="728" key="find.popup" timestamp="1628871043864">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="390" y="0" width="585" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1628871043864" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1628556332544">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

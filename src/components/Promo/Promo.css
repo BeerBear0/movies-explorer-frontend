@@ -1,66 +1,51 @@
 .promo {
-    background-color: #073042;
-    padding-bottom: 122px;
+  width: 100%;
+  background: #073042;
 }
 
-.promo__image {
-    width: 720px;
-    height: 320px;
-    opacity: .8;
-    background-image: url("../../images/promoImg.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 82px auto 0 auto;
+.promo__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 1280px;
+  min-height: 524px;
+  margin: 0 auto;
+  padding: 0 70px;
+  background: url('../../images/promo-background-logo.svg') no-repeat center;
 }
 
-.promo__title {
-    /*max-width: 720px;*/
-    font-style: normal;
-    font-weight: normal;
-    font-size: 50px;
-    line-height: 58px;
-    text-align: center;
-    letter-spacing: -0.04em;
-    color: #FFFFFF;
-    padding-top: 82px;
-    margin: 0;
+.promo__header {
+  max-width: 730px;
+  padding: 0;
+  margin: 0 auto;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
 }
 
-@media (max-width: 1024px) {
-    .promo {
-        padding: 0 50px 240px 50px;
-    }
-    .promo__image {
-        margin-top: 224px;
-    }
-
-}
-@media (max-width: 767px) {
-    .promo {
-        padding: 0 10px 180px 10px;
-    }
-    .promo__title {
-        /*max-width: px;*/
-        font-size: 31px;
-        line-height: 39px;
-    }
-    .promo__image {
-        width: 500px;
-        height: 248px;
-        background-size: contain;
-        margin-top: 142px;
-
-    }
+@media screen and (max-width: 768px) {
+  .promo__container {
+    min-height: 784px;
+    padding: 0 30px;
+  }
 }
 
-@media (max-width: 522px) {
-    .promo__image {
-        max-width: 400px;
-    }
-}
-
-@media (max-width: 424px) {
-    .promo__image {
-        max-width: 300px;
-    }
+@media screen and (max-width: 480px) {
+  .promo__container {
+    min-height: 570px;
+    padding: 0 10px;
+    background-size: 248px;
+  }
+  .promo__header {
+    max-width: 300px;
+    font-size: 31px;
+    line-height: 39px;
+  }
 }

@@ -1,3 +1,10 @@
+# Ссылка на сайт
+
+[https://eugenefox.movies.nomoredomains.monster/](https://eugenefox.movies.nomoredomains.monster/)
+
+# Ссылка на макет
+[https://www.figma.com/file/ItSqYDfGhrQBz6V4dFHOI7/Diploma-EKorotkevich-21-Silver?node-id=932%3A4336](https://www.figma.com/file/ItSqYDfGhrQBz6V4dFHOI7/Diploma-EKorotkevich-21-Silver?node-id=932%3A4336)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

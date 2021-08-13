@@ -1,3 +1,5 @@
+import React from 'react';
+import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {movies} from '../../utils/const'
 function MoviesCardList () {

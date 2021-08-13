@@ -40,7 +40,8 @@
     line-height: 17px;
     text-align: center;
     color: #FFFFFF;
-    margin: 70px auto 16px auto;
+    margin: 80px auto 16px auto;
+    cursor: pointer;
 }
 .auth-form__text {
     font-style: normal;
@@ -58,6 +59,18 @@
     line-height: 17px;
     text-align: center;
     color: #3456F3;
+    text-decoration: none;
+}
+.auth-form__error {
+    display: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #FF3055;
+}
+.auth-form__error_active {
+    display: block;
 }
 
 @media (max-width: 1024px) {

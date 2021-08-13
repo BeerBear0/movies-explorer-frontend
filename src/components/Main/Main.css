@@ -1,0 +1,33 @@
+.main {
+  width: 100%;
+}
+
+.main__section-header {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 90px 0 70px;
+  padding: 0 0 23px;
+  border-bottom: 2px solid #000000;
+  grid-area: section-header;
+}
+
+@media screen and (max-width: 768px) {
+  .main__section-header {
+    margin-top: 70px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main__section-header {
+    margin-top: 60px;
+    padding-bottom: 28px;
+    margin-bottom: 60px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

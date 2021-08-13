@@ -1,36 +1,4 @@
-@import url(./vendor/normalize.css);
-@import url(./fonts/InterWeb/inter.css);
-@import url(./components/AboutMe/AboutMe.css);
-@import url(./components/AboutProject/AboutProject.css);
-@import url(./components/Footer/Footer.css);
-@import url(./components/Header/Header.css);
-@import url(./components/Navigation/Navigation.css);
-@import url(./components/NavTab/NavTab.css);
-@import url(./components/Portfolio/Portfolio.css);
-@import url(./components/Promo/Promo.css);
-@import url(./components/Techs/Techs.css);
-@import url(components/Auth-form/Auth-form.css);
-@import url(./components/NotFound/NotFound.css);
-@import url(./components/Profile/Profile.css);
-@import url(./components/SearchForm/SearchForm.css);
-@import url(./components/MoviesCard/MoviesCard.css);
-@import url(./components/MoviesCardList/MoviesCardList.css);
-
-html {
-  max-width: 1280px;
-  margin: 0 auto;
-  font-family: 'Inter', Arial, sans-serif;
+body {
+  margin: 0;
+  padding: 0;
 }
-.page {
-  background-color: white;
-  max-width: 1280px;
-  margin: 0 auto;
-
-}
-
-
-
-
-
-
-

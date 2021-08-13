@@ -1,3 +1,7 @@
+import React from 'react';
+import './Auth-form.css';
+import {NavLink} from "react-router-dom";
+
 function Login (props){
     return (
         <div className='auth-form'>
@@ -16,7 +20,7 @@ function Login (props){
                 placeholder='Введите email'
             />
             <button className='auth-form__btn'>Войти</button>
-            <p className='auth-form__text'>Еще не зарегистрированы? <a href='/signup' className='auth-form__link'>Регистрация</a> </p>
+            <p className='auth-form__text'>Еще не зарегистрированы? <NavLink to='/signup' className='auth-form__link'>Регистрация</NavLink> </p>
         </div>
     )
 }
