@@ -12,7 +12,6 @@ function App() {
     return (
 <>
   <Switch>
-
         <Route exact path='/'>
             <Main />
         </Route>
@@ -32,7 +31,6 @@ function App() {
           <Profile />
         </Route>
   </Switch>
-
 </>
   );
 }
