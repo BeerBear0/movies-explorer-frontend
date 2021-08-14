@@ -29,7 +29,7 @@ function App() {
             <Movies />
         </Route>
         <Route path='/profile'>
-         <Profile />
+          <Profile />
         </Route>
   </Switch>
 

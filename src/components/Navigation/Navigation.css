@@ -43,6 +43,9 @@
     text-align: center;
     margin: 21px 70px 21px auto;
 }
+.navigation__account_display {
+  display: none;
+}
 @media (max-width: 768px) {
     .navigation__display {
         display: none;

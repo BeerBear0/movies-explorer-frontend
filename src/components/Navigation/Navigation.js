@@ -1,4 +1,4 @@
-import {NavLink, useLocation} from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 function Navigation (props){
     const { headerHref1, headerHref2, linkNum1, linkNum2 } = props;
@@ -10,7 +10,7 @@ function Navigation (props){
         <div className={`navigation__link-div ${location.pathname === '/' ? '' : 'navigation__link-div_loggedin'}`}>
             <NavLink to={headerHref2} className={`navigation__link ${location.pathname === '/' ? '' : 'navigation__link_loggedin'}`}>{linkNum2}</NavLink>
         </div>
-        {location.pathname === '/' ? '' : <NavLink className='navigation__account' to='/profile'>Аккаунт</NavLink>}
+        <NavLink to='/profile' className={`navigation__account ${location.pathname === '/' ? 'navigation__account_display' : ''}`}>Аккаунт</NavLink>
     </nav>
     )
 }
