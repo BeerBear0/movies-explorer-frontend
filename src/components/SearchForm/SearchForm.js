@@ -3,7 +3,7 @@ function SearchForm (props) {
         <div className='search-form'>
             <div className='search-form__container'>
                 <div className='search-form__icon-input' />
-                <input className='search-form__input' placeholder='Фильм' />
+                <input className='search-form__input' placeholder='Фильм'  required />
                 <div className='search-form__btn-container'>
                     <button className='search-form__btn'>Найти</button>
                 </div>

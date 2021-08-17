@@ -30,6 +30,11 @@
     line-height: 18px;
     cursor: pointer;
 }
+
+.search-form__btn:hover {
+  opacity: .8;
+}
+
 .search-form__icon-input {
   background-image: url("../../images/icon.svg");
   width: 22px;
