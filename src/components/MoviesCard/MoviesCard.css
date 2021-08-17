@@ -1,9 +1,10 @@
 .card {
-    width: 270px;
+    width: 364px;
     margin: 0 auto;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
 }
 .card__image {
-    width: 270px;
+    width: 100%;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     margin-bottom: 17px;

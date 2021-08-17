@@ -16,10 +16,10 @@ function MoviesCardList () {
                 })}
 
             </div>
-                <button
-                    type='button'
-                    aria-label='Обновить фильмы'
-                    className='card-list__btn'>Еще</button>
+            <button
+              type='button'
+              aria-label='Обновить фильмы'
+              className='card-list__btn'>Еще</button>
         </div>
     )
 }
