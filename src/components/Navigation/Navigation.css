@@ -11,16 +11,18 @@
     align-items: center;
     text-align: right;
     color: #FFFFFF;
-    margin: 29px 0 29px 0;
+    margin: 29px 0 29px auto;
     text-decoration: none;
+
 }
 .navigation__link_loggedin {
     color: black;
+    margin: 0;
 }
 
 .navigation__link-div {
     background-color: #2BE080;
-    margin:21px 0 21px 30px;
+    margin:21px 70px 21px 30px;
     width: 76px;
     height: 32px;
     display: flex;
