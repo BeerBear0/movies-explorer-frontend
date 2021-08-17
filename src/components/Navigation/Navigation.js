@@ -7,8 +7,8 @@ function Navigation (props){
     return(
     <nav className={`navigation ${location.pathname === '/' ? '' : 'navigation__display'}`}>
         <NavLink to={headerHref1} className={`navigation__link ${location.pathname === '/' ? '' : 'navigation__link_loggedin'}`}>{linkNum1}</NavLink>
-        <div className={`navigation__link-div ${location.pathname === '/' ? '' : 'navigation__link-div_loggedin'}`}>
-            <NavLink to={headerHref2} className={`navigation__link ${location.pathname === '/' ? '' : 'navigation__link_loggedin'}`}>{linkNum2}</NavLink>
+        <div className={`navigation__link-div ${location.pathname === '/' ? '' : 'navigation__link-div_color'}`}>
+            <NavLink to={headerHref2} className='navigation__link navigation__link_color'>{linkNum2}</NavLink>
         </div>
         <NavLink to='/profile' className={`navigation__account ${location.pathname === '/' ? 'navigation__account_display' : ''}`}>Аккаунт</NavLink>
     </nav>

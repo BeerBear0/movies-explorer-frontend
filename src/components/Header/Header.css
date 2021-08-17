@@ -13,7 +13,7 @@
     background-image: url("../../images/logo-min.png");
 }
 
-@media (max-width: 425px) {
+@media (max-width: 600px) {
     .header__logo {
         margin-left: 14px;
         margin-right: auto;
