@@ -20,7 +20,7 @@
 
 .navigation__link-div {
     background-color: #2BE080;
-    margin:21px 70px 21px 30px;
+    margin:21px 0 21px 30px;
     width: 76px;
     height: 32px;
     display: flex;
@@ -39,11 +39,12 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 18px;
+    margin-left: 0;
 }
 .navigation__link-style_two {
-  font-weight: normal;
-  font-size: 13px;
-  line-height: 18px;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 18px;
 }
 .navigation__account {
     text-decoration: none;
@@ -58,19 +59,19 @@
     align-items: center;
 }
 .navigation__account_display {
-  display: none;
+    display: none;
 }
 .navigation__btn {
-  background-image: url("../../images/icon__COLOR_icon-main.png");
-  border: none;
-  width: 10px;
-  height: 10px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #F9F9F9;
-  border-radius: 6px;
-  padding: 15px;
-  margin: 21px 0 auto 0;
+    background-image: url("../../images/icon__COLOR_icon-main.png");
+    border: none;
+    width: 10px;
+    height: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #F9F9F9;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 21px 70px auto 0;
 }
 
 @media (max-width: 768px) {
