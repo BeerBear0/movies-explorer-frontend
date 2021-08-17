@@ -72,29 +72,4 @@ export const movies = [
         image: 'http://memesmix.net/media/created/9grtdl.jpg',
         duration: '1ч42м',
     },
-    {
-        _id: '13',
-        nameRu: '13',
-        image: 'http://memesmix.net/media/created/9grtdl.jpg',
-        duration: '1ч42м',
-    },
-    {
-        _id: '14',
-        nameRu: '14',
-        image: 'http://memesmix.net/media/created/9grtdl.jpg',
-        duration: '1ч42м',
-    },
-    {
-        _id: '15',
-        nameRu: '15',
-        image: 'http://memesmix.net/media/created/9grtdl.jpg',
-        duration: '1ч42м',
-    },
-    {
-        _id: '16',
-        nameRu: '16',
-        image: 'http://memesmix.net/media/created/9grtdl.jpg',
-        duration: '1ч42м',
-    },
-
 ]
