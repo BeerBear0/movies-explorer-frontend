@@ -7,7 +7,7 @@ function Header ({linkNum1, linkNum2, headerHref1, headerHref2}){
     const location = useLocation();
 
     return(
-        <div className='header'>
+        <div className={`header ${location.pathname === '/' ? '' : 'header__logged-in'}`}>
             <div  className='header__logo' />
             <Navigation
                 headerHref1={headerHref1}
