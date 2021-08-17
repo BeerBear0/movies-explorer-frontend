@@ -44,19 +44,13 @@
   font-weight: normal;
   font-size: 13px;
   line-height: 18px;
-  /*width: px;*/
 }
 .navigation__account {
     text-decoration: none;
     color: black;
-    /*width: 100px;*/
-    /*height: 16px;*/
-    /*padding: 8px 0 8px 0;*/
-    /*background-color: #F5F5F5;*/
-    /*border-radius: 20px;*/
     text-align: center;
     font-style: normal;
-    margin: 21px 70px 21px auto;
+    margin: 21px 13px 21px auto;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
@@ -66,6 +60,19 @@
 .navigation__account_display {
   display: none;
 }
+.navigation__btn {
+  background-image: url("../../images/icon__COLOR_icon-main.png");
+  border: none;
+  width: 10px;
+  height: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #F9F9F9;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 21px 0 auto 0;
+}
+
 @media (max-width: 768px) {
     .navigation__display {
         display: none;

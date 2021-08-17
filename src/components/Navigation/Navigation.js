@@ -10,7 +10,8 @@ function Navigation (props){
         <div className={`navigation__link-div ${location.pathname === '/' ? '' : 'navigation__link-div_loggedin '}`}>
             <NavLink to={headerHref2} className={`navigation__link navigation__link_loggedin ${location.pathname === '/' ? '' : 'navigation__link-style_two'}`}>{linkNum2}</NavLink>
         </div>
-        <NavLink to='/profile' className={`navigation__account ${location.pathname === '/' ? ' navigation__account_display' : ''}`}>Аккаунт</NavLink>
+        <NavLink to='/profile' className={`navigation__account ${location.pathname === '/' ? 'navigation__account_display' : ''}`}>Аккаунт</NavLink>
+        <button type='button' className={`navigation__btn ${location.pathname === '/' ? 'navigation__account_display' : ''}`} />
     </nav>
     )
 }
