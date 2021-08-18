@@ -1,9 +1,16 @@
+import { useState } from 'react';
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {movies} from '../../utils/const'
-import Footer from "../Footer/Footer";
 
-function MoviesCardList () {
-    return (
+function MoviesCardList ({movies}) {
+
+
+  const displayCardRender = () => {
+
+  }
+
+
+  return (
         <div className='card-list'>
             <div className='card-list__grid-container'>
                 {movies.map((movie) => {
