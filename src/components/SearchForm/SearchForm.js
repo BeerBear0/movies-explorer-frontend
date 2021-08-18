@@ -1,4 +1,6 @@
 function SearchForm (props) {
+
+
     return(
         <div className='search-form'>
             <div className='search-form__container'>
