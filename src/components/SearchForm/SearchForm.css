@@ -1,5 +1,5 @@
 .search-form {
-    /*width: 100%;*/
+    /*width: 90%;*/
     display: flex;
     margin: 70px 70px 80px 70px;
     border-radius: 9px;
@@ -7,9 +7,8 @@
 }
 .search-form__container {
    display: flex;
-   margin-left: 20px;
-   margin-right: 0;
-   width: 100%
+   margin: 0 auto;
+   width: 100%;
 }
 .search-form__btn-container {
     border-right: 1px solid #CBCBCB;
@@ -17,6 +16,7 @@
     height: 40px;
     margin-top: auto;
     margin-bottom: auto;
+    margin-left: 20px;
 }
 .search-form__btn {
     width: 60px;
@@ -101,8 +101,9 @@
     }
 
     .search-form__btn-container {
-        padding-right: 19px;
+        padding: 0;
         border: none;
+        margin-right: 19px;
     }
     .search-form__btn {
         font-size: 11px;
@@ -112,6 +113,7 @@
         background-color: white;
         width: 100%;
         padding-top: 46px;
+        margin: 0;
     }
     .search-form__checkbox {
         margin: 0 0 0 auto;
