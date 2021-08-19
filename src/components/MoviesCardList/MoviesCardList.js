@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import MoviesCard from "../MoviesCard/MoviesCard";
-import {movies} from '../../utils/const'
 
 function MoviesCardList ({movies}) {
-
+const [moviesList, setMoviesList] = useState([])
 
   const displayCardRender = () => {
 
@@ -13,7 +12,7 @@ function MoviesCardList ({movies}) {
   return (
         <div className='card-list'>
             <div className='card-list__grid-container'>
-                {movies.map((movie) => {
+                {moviesList.map((movie) => {
                     return (
                         <MoviesCard
                             movie={movie}
