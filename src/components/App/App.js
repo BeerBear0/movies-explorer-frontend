@@ -1,16 +1,18 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, useHistory} from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Register from '../Auth-form/Register';
 import Login from '../Auth-form/Login';
 import Profile from '../Profile/Profile';
+import {CurrentUserContext} from "../../context/CurrentUserContext";
 
 function App() {
-
+  const history = useHistory();
+  const [currentUser, setCurrentUser] = React.useState({});
     return (
-<>
+<CurrentUserContext.Provider value={currentUser}>
   <Switch>
         <Route exact path='/'>
             <Main />
@@ -31,7 +33,7 @@ function App() {
           <Profile />
         </Route>
   </Switch>
-</>
+</CurrentUserContext.Provider>
   );
 }
 

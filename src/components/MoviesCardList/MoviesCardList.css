@@ -38,18 +38,6 @@
     }
 }
 
-@media (max-width: 1100px) {
-  .card-list__grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 1024px) {
-    .card-list__grid-container {
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 30px;
-        row-gap: 30px;
-    }
-}
 @media (max-width: 817px) {
     .card-list {
       padding: 40px 10px 10px 10px;

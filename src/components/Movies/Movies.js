@@ -1,71 +1,64 @@
 import {useState, useEffect, useContext} from "react";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
+
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import {moviesApi} from "../../utils/MoviesApi";
-import { CurrentUserContext } from "../../context/CurrentUserContext";
+import { moviesApi } from "../../utils/MoviesApi";
+import { filterMovies } from "../../utils/const";
 
-function Movies (props){
-const { savedMovies, onSaveMovie, onDeleteSaveMovie } = props;
+function Movies ({onSaveMovie, onUnSaveMovie, savedMovies}){
 
-  const [displayMovies, setDisplayMovies] = useState([]);
+  const [nothingFound, setNothingFound] = useState(false);
+  const [initialMovies, setInitialMovies] = useState([])
   const [isMoviesLoading, setIsMoviesLoading] = useState(false);
-  const [notFound, setNotFound] = useState(false);
-  const [isShortMovies, setIsShortMovies] = useState(false)
-
-
+  const [isShortMovies, setIsShortMovies] = useState(false);
+  const [isError, setIsError] = useState(false);
   const currentUser = useContext(CurrentUserContext);
 
-  function filterMovies(movies, userQuery) {
-    const moviesByUserQuery = movies.filter((movie) => {
-      const movieEn = String(movie.nameEN).toLowerCase().trim();
-      const movieRu = String(movie.nameRU).toLowerCase().trim();
-      const userMovie = userQuery.toLowerCase().trim();
-      return movieRu.indexOf(userMovie) !== -1 || movieEn.indexOf(userMovie) !== -1;
-    });
-    return moviesByUserQuery;
+  function handleSetFilteredMovies(movies, userQuery, isShortMovies) {
+    let moviesList = filterMovies(movies, userQuery, isShortMovies);
+    moviesList.length === 0 ? setNothingFound(true) : setNothingFound(false);
+    if (isShortMovies) {
+      moviesList = moviesList.filter(movie => movie.duration <= 40);
+    }
+    setInitialMovies(moviesList);
+    localStorage.setItem(`movies + ${currentUser.email}`, JSON.stringify(moviesList));
   }
 
-  function handleSetFilteredMovies(movie, userQuery, isShortMovies) {
-    let moviesList = filterMovies (movie, userQuery, isShortMovies);
-    moviesList.length === 0 ? setNotFound(true) : setNotFound(false);
-    if(isShortMovies) {
-        moviesList = moviesList.filter(movie => movie.duration <= 40)
-    }
-    setDisplayMovies(moviesList);
-    localStorage.setItem(`movies + ${currentUser}`, JSON.stringify(moviesList))
-  }
-  function checkShortMovie () {
-    setIsShortMovies(!isShortMovies);
-    if(!isShortMovies) {
-      setDisplayMovies(displayMovies.filter(movie => movie.duration <= 40));
-    }
-    else {
-      setDisplayMovies(JSON.parse(localStorage.getItem(`movies + ${currentUser}`)))
-    }
-  }
-
-  useEffect(() => {
-    if(localStorage.getItem(`movies + ${currentUser}`)) {
-      const movies = JSON.parse(localStorage.getItem(`movies + ${currentUser}`));
-      movies.length === 0 ? setNotFound(true) : setNotFound(false)
-      setDisplayMovies(movies);
-    }
-  }, [currentUser]);
-
-  function handleSearchMovies(inputValue) {
+  function handleSearchFilms(inputValue) {
     setIsMoviesLoading(true);
     moviesApi.getMovies()
       .then((movie) => {
         handleSetFilteredMovies(movie, inputValue, isShortMovies);
       })
-      .catch(err => console.log(`Ошибка ${err.status}`))
-      .finally(() => setIsMoviesLoading(false))
+      .catch((err) => {
+        setIsError(true);
+        console.log('Ошибка ' + err)
+      })
+      .finally(() => setIsMoviesLoading(false));
   }
 
+  function handleShortMoviesChek() {
+    setIsShortMovies(!isShortMovies);
+    if(!isShortMovies) {
+      setInitialMovies(initialMovies.filter(movie => movie.duration <= 40));
+    } else {
+      setInitialMovies(JSON.parse(localStorage.getItem(`movies + ${currentUser.email}`)));
+    }
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem(`movies + ${currentUser.email}`)) {
+      const movies = JSON.parse(localStorage.getItem(`movies + ${currentUser.email}`));
+      movies.length === 0 ? setNothingFound(true) : setNothingFound(false)
+      setInitialMovies(movies);
+    }
+  }, [currentUser.email]);
+
   return (
-        <>
+        <section className='movies'>
             <Header
                 linkNum1='Фильмы'
                 linkNum2='Сохраненные фильмы'
@@ -73,20 +66,23 @@ const { savedMovies, onSaveMovie, onDeleteSaveMovie } = props;
                 headerHref2='/saved-movies'
             />
             <SearchForm
-              onSearch={handleSearchMovies}
-              isShortMovies={isShortMovies}
-              onCheckBoxClick={checkShortMovie}
+               onSearchMovies={handleSearchFilms}
+               isShortMovies={isShortMovies}
+               onCheckBoxClick={handleShortMoviesChek}
             />
-            <MoviesCardList
-              notFound={notFound}
-              movies={displayMovies}
+            {isError ? <p className='search-form-error'>
+              Во время запроса произошла ошибка. Пропробуйте еще раз.
+            </p> : <MoviesCardList
+              nothingFound={nothingFound}
+              movies={initialMovies}
               savedMovies={savedMovies}
               moviesLoading={isMoviesLoading}
               onSaveMovie={onSaveMovie}
-              onDeleteSaveMovie={onDeleteSaveMovie}
-            />
+              onUnSaveMovie={onUnSaveMovie}/>
+            }
+
             <Footer />
-        </>
+        </section>
     )
 }
 

@@ -1,6 +1,6 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
-function SearchForm ({ onSearch, isShortMovies, onCheckClick }) {
+function SearchForm ({ onSearchMovies, isShortMovies, onCheckBoxClick }) {
   //поисковой запрос
     const [isSearch, setIsSearch] = useState('');
 
@@ -10,27 +10,31 @@ function SearchForm ({ onSearch, isShortMovies, onCheckClick }) {
 
     const handleSearchBtn = (evt) => {
       evt.preventDefault();
-      onSearch(isSearch);
+      onSearchMovies(isSearch);
     }
     return(
         <div className='search-form'>
             <form
               className='search-form__container'
-              onSabmit={handleSearchBtn}
+              onSubmit={handleSearchBtn}
             >
                 <div className='search-form__icon-input' />
                 <input
                   value={isSearch || ''}
+                  type='text'
+                  name='search-btn__query-input'
                   onChange={handleChangeSearch}
                   className='search-form__input'
                   placeholder='Фильм'
-                  required />
+                  minLength='1'
+                  required
+                />
                 <div className='search-form__btn-container'>
-                    <button className='search-form__btn'>Найти</button>
+                    <button type='submit' className='search-form__btn'>Найти</button>
                 </div>
 
             </form>
-            <div className='search-form__checkbox-container'>
+            <div onChange={onCheckBoxClick} className='search-form__checkbox-container'>
             <input
                 type='checkbox'
                 className='search-form__checkbox'

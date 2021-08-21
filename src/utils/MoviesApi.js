@@ -1,17 +1,17 @@
-import {MOVIES_URL} from "./const";
+import { MOVIES_URL } from "./const";
 
 class MoviesApi {
-  constructor(url) {
-    this._url = url;
+  constructor(data) {
+    this._baseUrl = data.baseUrl;
   }
   _getResponseData (res) {
     if(!res.ok) {
-      Promise.reject(`Ошибка ${res.status}`)
+      return Promise.reject(`Ошибка ${res.status}`)
     }
-    return res.json
+    return res.json();
   }
   getMovies () {
-    return fetch(this._url, {
+    return fetch(`${this._baseUrl}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -20,4 +20,6 @@ class MoviesApi {
       .then(res => this._getResponseData(res))
   }
 }
-export const moviesApi = new MoviesApi(MOVIES_URL)
+export const moviesApi = new MoviesApi({
+  baseUrl: MOVIES_URL,
+})
