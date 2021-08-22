@@ -53,7 +53,7 @@ function Movies ({onSaveMovie, onUnSaveMovie, savedMovies}){
     if (localStorage.getItem(`movies + ${currentUser.email}`)) {
       const movies = JSON.parse(localStorage.getItem(`movies + ${currentUser.email}`));
       movies.length === 0 ? setNothingFound(true) : setNothingFound(false)
-      setInitialMovies(movies);
+      setInitialMovies([]);
     }
   }, [currentUser.email]);
 

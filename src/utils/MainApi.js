@@ -16,6 +16,35 @@ class MainApi {
       headers: this._headers
     })
   }
+
+  likeAndSaveMovie(movie) {
+    return fetch(`${this._baseUrl}/movies`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        country: movie.country,
+        director: movie.director,
+        duration: movie.duration,
+        year: movie.year,
+        description: movie.description,
+        image: movie.image.url,
+        trailer: movie.trailerLink,
+        thumbnail: movie.image.format.thumbnail.url,
+        movieId: movie.id,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN,
+      })
+    })
+      .then(this._getResponse)
+  }
+
+  unSaveMovie(movieId) {
+    return fetch(`${this._baseUrl}/movies/${movieId}`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+      .then(this._getResponse)
+  }
 }
 
 export const mainApi = new MainApi({
