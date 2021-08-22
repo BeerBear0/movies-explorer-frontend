@@ -1,9 +1,9 @@
 import {BASE_URL} from "./const";
+import {IMAGE_URL} from "./const";
 
 class MainApi {
   constructor(data) {
     this._baseUrl = data.baseUrl;
-    this._headers = data.headers;
   }
   _getResponse (res) {
     if(!res.ok) {
@@ -11,26 +11,37 @@ class MainApi {
     }
     return res.json();
   }
-  _fetch(url) {
-    return fetch(`${this._baseUrl}${url}`, {
-      headers: this._headers
-    })
+  _getHeaders (jwt) {
+    jwt = typeof jwt === 'undefined' ? '' : jwt;
+    return {
+      authorization: `Bearer ${jwt}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
   }
+  getToken() {
+    return localStorage.getItem('jwt')
+  }
+  // _fetch(url) {
+  //   return fetch(`${this._baseUrl}${url}`, {
+  //     headers: this._getHeaders
+  //   })
+  // }
 
   likeAndSaveMovie(movie) {
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
-      headers: this._headers,
+      headers: this._getHeaders(localStorage.getItem('jwt')),
       body: JSON.stringify({
         country: movie.country,
         director: movie.director,
         duration: movie.duration,
         year: movie.year,
         description: movie.description,
-        image: movie.image.url,
+        image: `${IMAGE_URL}${movie.image.url}`,
         trailer: movie.trailerLink,
-        thumbnail: movie.image.format.thumbnail.url,
-        movieId: movie.id,
+        thumbnail: `${IMAGE_URL}${movie.image.url}`,
+        movieId: movie.id.toString(),
         nameRU: movie.nameRU,
         nameEN: movie.nameEN,
       })
@@ -38,10 +49,10 @@ class MainApi {
       .then(this._getResponse)
   }
 
-  unSaveMovie(movieId) {
+  removeMovieFromSave(movieId) {
     return fetch(`${this._baseUrl}/movies/${movieId}`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._getHeaders(localStorage.getItem('jwt'))
     })
       .then(this._getResponse)
   }
@@ -49,8 +60,4 @@ class MainApi {
 
 export const mainApi = new MainApi({
   baseUrl: BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  }
 })

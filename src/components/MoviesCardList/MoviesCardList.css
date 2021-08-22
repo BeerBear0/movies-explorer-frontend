@@ -38,12 +38,12 @@
     }
 }
 
-@media (max-width: 817px) {
+@media (max-width: 717px) {
     .card-list {
       padding: 40px 10px 10px 10px;
     }
     .card-list__grid-container {
-        /*width: 300px;*/
+        width: 300px;
         grid-template-columns: 1fr;
         row-gap: 14px;
         column-gap: 0;

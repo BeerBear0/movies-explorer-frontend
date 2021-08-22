@@ -88,7 +88,8 @@ function MoviesCardList (props) {
                       isSavedMoviePage={isSavedMoviePage}
                       onSaveMovie={onSaveMovie}
                       onUnSaveMovie={onUnSaveMovie}
-                      // isSave={checkSavedMovie(savedMovies, movie)}
+                      isSave={checkSavedMovie(savedMovies, movie)}
+                      savedMovies={savedMovies}
                     />
                   )
                 })}

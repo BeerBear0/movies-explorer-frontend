@@ -2,6 +2,8 @@
 export const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 export const BASE_URL = 'https://api.movies.nikko.nomoredomains.monster';
 export const IMAGE_URL = 'https://api.nomoreparties.co';
+
+
 export function filterMovies(movies, userQuery) {
   return  movies.filter((movie) => {
     const movieEn = String(movie.nameEN).toLowerCase().trim();

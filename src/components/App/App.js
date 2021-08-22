@@ -35,18 +35,10 @@ function App() {
       })
       .catch(err => console.log(`Ошибка + ${err}`));
   }
-  function handleUnSaveMovie(movieId, isSavedMoviePage) {
-    let movieDelete;
-    if (isSavedMoviePage) {
-      movieDelete = movieId;
-    }
-    else {
-      movieDelete = savedMovies.find(movies => movies.movieId === movieId)._id;
-    }
-
-    mainApi.unSaveMovie(movieDelete)
+  function handleUnSaveMovie(movieId) {
+    mainApi.removeMovieFromSave(movieId)
       .then(()=> {
-        setSavedMovies(savedMovies.filter(item => item._id !== movieDelete));
+        setSavedMovies(savedMovies.filter(movie => movie._id !== movieId));
     })
       .catch(err => console.log('Ошибка ' + err));
   }
