@@ -22,11 +22,6 @@ class MainApi {
   getToken() {
     return localStorage.getItem('jwt')
   }
-  // _fetch(url) {
-  //   return fetch(`${this._baseUrl}${url}`, {
-  //     headers: this._getHeaders
-  //   })
-  // }
 
   likeAndSaveMovie(movie) {
     return fetch(`${this._baseUrl}/movies`, {
@@ -49,14 +44,58 @@ class MainApi {
       .then(this._getResponse)
   }
 
-  removeMovieFromSave(movieId) {
+  removeSaveMovie(movieId) {
     return fetch(`${this._baseUrl}/movies/${movieId}`, {
       method: 'DELETE',
       headers: this._getHeaders(localStorage.getItem('jwt'))
     })
       .then(this._getResponse)
   }
+  getSavedMovies() {
+      return fetch(`${this._baseUrl}/movies`, {
+        headers: this._getHeaders(localStorage.getItem('jwt'))
+      })
+  }
+  register(email, password, name) {
+    return fetch(`${this._baseUrl}/signup`, {
+      method: 'POST',
+      headers: this._getHeaders(),
+      body:JSON.stringify({
+        email,
+        password,
+        name
+      })
+    })
+      .then(this._getResponse);
+  }
+  login(email, password) {
+    return fetch(`${this._baseUrl}/signin`, {
+      method: 'POST',
+      headers: this._getHeaders(),
+      body: JSON.stringify({
+        email,
+        password
+      })
+    })
+      .then(this._getResponse())
+  }
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'GET',
+      headers: this._getHeaders(localStorage.getItem('jwt')),
+    })
+      .then(this._getResponse)
+  }
+  updateProfileUser() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this._getHeaders(localStorage.getItem('jwt'))
+    })
+      .then(this._getResponse)
+  }
+
 }
+
 
 export const mainApi = new MainApi({
   baseUrl: BASE_URL,

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-function SearchForm ({ onSearchMovies, isShortMovies, onCheckBoxClick }) {
-  //поисковой запрос
+function SearchForm ({ onSearchMovies, isShortMovies, setIsShortMovies }) {
+    //поисковой запрос
     const [isSearch, setIsSearch] = useState('');
 
     const handleChangeSearch = (evt) => {
@@ -12,6 +12,9 @@ function SearchForm ({ onSearchMovies, isShortMovies, onCheckBoxClick }) {
       evt.preventDefault();
       onSearchMovies(isSearch);
     }
+    function handlerIsShortMovies () {
+    setIsShortMovies(!isShortMovies)
+  }
     return(
         <div className='search-form'>
             <form
@@ -34,10 +37,11 @@ function SearchForm ({ onSearchMovies, isShortMovies, onCheckBoxClick }) {
                 </div>
 
             </form>
-            <div onChange={onCheckBoxClick} className='search-form__checkbox-container'>
+            <div  className='search-form__checkbox-container'>
             <input
                 type='checkbox'
                 className='search-form__checkbox'
+                onChange={handlerIsShortMovies}
             />
             <span className='search-form__checkbox-text'>Короткометражки</span>
             </div>

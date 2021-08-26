@@ -3,18 +3,21 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { filterMovies} from "../../utils/const";
+import Footer from "../Footer/Footer";
 
-  function SavedMovies ({onUnSaveMovie, savedMovies}){
+  function SavedMovies ({ onUnSaveMovie }){
     const [nothingFound, setNothingFound] = useState('');
     const [savedMoviesList, setSavedMoviesList] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [isShortMovies, setIsShortMovies] = useState('');
 
+
+
     function handleSetFilteredMovies(savedMovies, userQuery, isShortMovies) {
       let moviesList = filterMovies(savedMovies, userQuery, isShortMovies);
       moviesList.length === 0 ? setNothingFound(true) : setNothingFound(false);
       if(isShortMovies) {
-       return  moviesList = moviesList.filter(movie => movie.duration <= 40)
+       return  moviesList.filter(movie => movie.duration <= 40)
       }
       setSavedMoviesList(moviesList)
     }
@@ -31,15 +34,15 @@ import { filterMovies} from "../../utils/const";
           setSavedMoviesList(savedMovies)
         }
     }
-    // useEffect(() => {
-    //   if(savedMovies.length !== 0) {
-    //     setNothingFound(false);
-    //     setSavedMoviesList(savedMovies);
-    //   }
-    //   else {
-    //     setNothingFound(true);
-    //   }
-    // }, [savedMovies])
+    useEffect(() => {
+      if(savedMovies.length !== 0) {
+        setNothingFound(false);
+        setSavedMoviesList(savedMovies);
+      }
+      else {
+        setNothingFound(true);
+      }
+    }, [savedMovies])
     return (
         <>
             <Header
@@ -59,6 +62,7 @@ import { filterMovies} from "../../utils/const";
               onUsSavemovie={onUnSaveMovie}
               savedMovies={savedMovies}
             />
+            <Footer />
         </>
     )
 }
