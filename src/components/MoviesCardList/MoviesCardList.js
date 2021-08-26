@@ -1,105 +1,83 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
 
 function MoviesCardList (props) {
  const {
-   movies,
    nothingFound,
-   moviesLoading,
-   isSavedMoviePage,
-   onSaveMovie,
-   onUnSaveMovie,
-   savedMovies
+   movies,
+   savedMovies,
+   displayedMovies,
+   setDisplayedMovies,
+   isMoreBtn,
+   setIsMoreBtn,
+   saveMovie,
+   removeSaveMovie,
+   isMoviesLoading,
+   countMovies,
+   setCountMovies
  } = props;
 
-  const [cardsShowDetails, setCardsShowDetails] = useState({ total: 12, more: 3 });
-  const [movieList, setMovieList] = useState([]);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  function checkSavedMovie(savedMovies, movie) {
-    let save = savedMovies.find(savedMovie => savedMovie.movieId === movie.id);
-    return save;
-  }
+ const location = useLocation();
 
   useEffect(() => {
-    function handleScreenResize() {
-      setScreenWidth(window.innerWidth);
+    console.log(displayedMovies, movies);
+    if (movies.length > displayedMovies.length) {
+      setIsMoreBtn(true);
+    } else {
+      setIsMoreBtn(false);
     }
+  }, [movies, displayedMovies]);
 
-    window.addEventListener('resize', resizeTimer, false);
 
-    let resizeTimeout;
-
-    function resizeTimer() {
-      if (!resizeTimeout ) {
-        resizeTimeout = setTimeout(() => {
-          resizeTimeout = null;
-          handleScreenResize();
-        }, 1000);
-      }
-    }
-
-    return () => window.removeEventListener('resize', handleScreenResize);
-  }, [screenWidth]);
 
   useEffect(() => {
-    if (screenWidth >= 1280) {
-      setCardsShowDetails({ total: 12, more: 3 })
+    if (location.pathname === '/saved-movies') {
+      setIsMoreBtn(false);
     }
-    else if (screenWidth <= 768 && screenWidth > 420) {
-      setCardsShowDetails({ total: 8, more: 2 })
-    }
-    else {
-      setCardsShowDetails({ total: 5, more: 2 })
-    }
+  }, [movies, setDisplayedMovies, location.pathname]);
 
-  }, [screenWidth]);
-
-  useEffect(() => {
-    if (movies.length) {
-      const tempMovies = movies.filter((item, i) => i < cardsShowDetails.total);
-      setMovieList(tempMovies);
-    }
-  }, [movies, cardsShowDetails.total]);
-
-  function handleClickMoreMovies() {
-    const start = movieList.length;
-    const end = start + cardsShowDetails.more;
-    const additional = movies.length - start;
-
-    if (additional > 0) {
-      const newCards = movies.slice(start, end);
-      setMovieList([...movieList, ...newCards]);
-    }
-  }
 
   return (
     <>
-      {moviesLoading ? <Preloader /> :
+      {isMoviesLoading ? <Preloader /> :
         <div className='card-list'>
           { nothingFound ? <p className='nothing-found'>По вашему запросу ничего не найдено</p> :
               <div className='card-list__grid-container'>
-                {movieList.map((movie) => {
-                  return (
+                {location.pathname === '/movies' ?
+                  (movies.slice(0, countMovies.total).map((movie) => (
                     <MoviesCard
                       movie={movie}
                       key={movie.id || movie._id}
-                      isSavedMoviePage={isSavedMoviePage}
-                      onSaveMovie={onSaveMovie}
-                      onUnSaveMovie={onUnSaveMovie}
-                      isSave={checkSavedMovie(savedMovies, movie)}
+                      // isSavedMoviePage={isSavedMoviePage}
                       savedMovies={savedMovies}
+                      saveMovie={saveMovie}
+                      removeSaveMovie={removeSaveMovie}
                     />
-                  )
-                })}
+                    ))
+                ) : (savedMovies.map(movie => (
+                      <MoviesCard
+                        movie={movie}
+                        key={movie.id || movie._id}
+                        // isSavedMoviePage={isSavedMoviePage}
+                        savedMovies={savedMovies}
+                        saveMovie={saveMovie}
+                        removeSaveMovie={removeSaveMovie}
+                      />)
+                    ))
+                  }
               </div>
           }
-              {isSavedMoviePage || movieList.length === movies.length ? '' :  <button
-                type='button'
-                aria-label='Обновить фильмы'
-                className='card-list__btn'
-                onClick={handleClickMoreMovies}>Еще</button> }
+              {movies.length > displayedMovies.length || location.pathname !== '/saved-movies' ?
+                <button
+                  type='button'
+                  aria-label='Обновить фильмы'
+                  className='card-list__btn'
+                  onClick={() => {
+                    setCountMovies({...countMovies, startsCards: countMovies.total + countMovies.more})
+                  }}>Еще</button> : ''}
+
         </div>
       }
     </>

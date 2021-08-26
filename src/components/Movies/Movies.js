@@ -14,7 +14,9 @@ function Movies ({ isLoginIn }){
   // ничего не найдено
   const [nothingFound, setNothingFound] = useState(false);
   // фильмы найденые по запросу
-  const [initialMovies, setInitialMovies] = useState([])
+  const [searchMovies, setSearchMovies] = useState([])
+  // отоброжаемые фильмы
+  const [displayMovies, setDisplayMovies] = useState([])
   //прелоудер
   const [isMoviesLoading, setIsMoviesLoading] = useState(false);
   // короткометраджки
@@ -59,13 +61,17 @@ function Movies ({ isLoginIn }){
     }
   }
   const MoviesToRender = useMemo(
-    () => filterShortMovies(initialMovies),
-    [isShortMovies, initialMovies]
+    () => filterShortMovies(searchMovies),
+    [isShortMovies, searchMovies]
   );
 
   const savedMoviesToRender = useMemo(
     () => filterShortMovies(savedMovies),
     [isShortMovies, savedMovies]
+  );
+  const displayedMoviesToRender = useMemo(
+    () => filterShortMovies(displayMovies),
+    [isShortMovies, displayMovies]
   );
 
   //поиск фильма
@@ -79,7 +85,7 @@ function Movies ({ isLoginIn }){
     } else {
       setIsError(false)
     }
-    setInitialMovies(searchMovies);
+    setSearchMovies(searchMovies);
   }
   // клик по кнопке поиска
   function handleSearchBtn({ searchKey }) {
@@ -103,6 +109,18 @@ function Movies ({ isLoginIn }){
       setIsMoviesLoading(false)
     }
   }
+  //  кол-во фильмов в блоке
+  function countMoviesDisplay () {
+    const screenWidth = window.screen.width;
+    if (screenWidth <= 425) {
+      setCountMovies({ total: 5, more: 2 })
+    } else if (screenWidth <= 768) {
+      setCountMovies({ total: 8, more: 2 })
+    } else {
+      setCountMovies({ total: 12, more: 3 })
+    }
+  }
+
   // добавление фильма в сохр
   function saveMovie(movie) {
     mainApi.likeAndSaveMovie(movie)
@@ -136,19 +154,18 @@ function Movies ({ isLoginIn }){
             {isError ? <p className='search-form-error'>
               Во время запроса произошла ошибка. Пропробуйте еще раз.
             </p> : <MoviesCardList
+              nothingFound={nothingFound}
               movies={MoviesToRender}
               savedMovies={savedMoviesToRender}
-              // displayedMovies={displayedMoviesReadyToRender}
-              setDisplayedMovies={setInitialMovies}
-              // countOfDisplayMovie={countOfDisplayMovie}
-              // setCountOfDisplayMovie={setCountOfDisplayMovie}
+              displayedMovies={displayedMoviesToRender}
+              setDispayedMovies={setDisplayMovies}
               isMoreBtn={isMoreBtn}
               setIsMoreBtn={setIsMoreBtn}
-              // displayLimitedCountOfMoviesSetter={displayLimitedCountOfMoviesSetter}
-              addMovieToSaved={savedMovies}
-              removeMovieFromSaved={removeSaveMovie()}
-              // listMessageDisplay={listMessageDisplay}
-              // setListMessageDisplay={setListMessageDisplay}
+              saveMovie={saveMovie}
+              removeSaveMovie={removeSaveMovie}
+              isMoviesLoading={isMoviesLoading}
+              countMovies={countMovies}
+              setCountMovies={setCountMovies}
               />
             }
 

@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useRouteMatch } from 'react-router-dom'
 import {IMAGE_URL} from "../../utils/const";
 
-function MoviesCard ({ movie, isSavedMoviePage, onSaveMovie, onUnSaveMovie, isSave, savedMovies }) {
+function MoviesCard ({ movie, savedMovies, saveMovie, removeSaveMovie }) {
   const [movieLikeStatus, setMovieLikeStatus] = useState (false)
+
+  const isSavedMoviePage = useRouteMatch({ path: '/saved-movies', exact: true})
 
   useEffect(() => {
     if(savedMovies.some(film => movie.movieId === film.movieId)) {
@@ -14,11 +17,11 @@ function MoviesCard ({ movie, isSavedMoviePage, onSaveMovie, onUnSaveMovie, isSa
       const isLiked = savedMovies.some(film => movie.movieId === film.movieId)
       console.log(isLiked)
       if(isLiked) {
-        onUnSaveMovie(movie._id)
+        saveMovie(movie._id)
         setMovieLikeStatus( false)
       }
       else {
-        onSaveMovie(movie);
+        removeSaveMovie(movie);
         setMovieLikeStatus(true)
       }
     }
