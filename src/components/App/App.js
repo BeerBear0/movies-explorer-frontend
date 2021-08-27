@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {Route, Switch, useHistory} from 'react-router-dom';
+import {Route, Switch, useHistory, Redirect} from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -11,133 +11,128 @@ import {mainApi} from "../../utils/MainApi";
 
 function App() {
 
-  const [isLogin, setIsLogin] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [widthMode, setWidthMode] = useState(calcWidthMode());
+  const [loggedIn, setLoggedIn] = useState(null)
+  const [currentUser, setCurrentUser] = useState({})
+  const token = localStorage.getItem('token');
+
+  function calcWidthMode() {
+    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if(width >= 1024) {
+      return 'desktop'
+    }
+    else if (width >= 768) {
+      return 'tablet'
+    }
+    else {
+      return 'mobile'
+    }
+  }
+  useEffect(() => {
+    let timeoutId = null;
+    window.addEventListener('resize', function ()  {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => setWidthMode(calcWidthMode()), 150)
+    })
+  }, [])
 
   const history = useHistory();
 
-  const checkToken = () => {
-    const jwt = mainApi.getToken();
-    if(!jwt) {
+  function handleRegister(name, email, password) {
+    return mainApi.register(name, email, password)
+      .then(() => {
+        mainApi.login(email, password)
+          {
+            setLoggedIn(true)
+          }
+      })
+  }
+  function handleLogin(email, password) {
+    return mainApi.login(email, password)
+      .then(() => {
+        setLoggedIn(true)
+      })
+  }
+
+  useEffect(() => {
+    if(!loggedIn) {
       return
     }
-    else {
-      mainApi.getUserInfo()
+    return mainApi.getUserInfo(token)
+      .then(res => {
+        setCurrentUser({
+          name: res.name,
+          email: res.email,
+          id: res._id
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [loggedIn, token])
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(token) {
+      mainApi.getContent(token)
         .then(res => {
           if(res) {
-            setIsLogin(true)
+            setLoggedIn(true)
           }
         })
-        .catch(err => console.log(`Ошибка ${err}`));
-    }
-  }
-  useEffect(() => {
-    checkToken();
-  }, [])
-  useEffect(() => {
-    if(isLogin) {
-      mainApi.getUserInfo()
-        .then(data => {
-          setCurrentUser(data)
+        .catch(err => {
+          localStorage.removeItem('token')
+          setLoggedIn(false)
+          console.log(err)
         })
-        .catch(err => console.log(`Ошибка ${err}`))
     }
-  }, [history, isLogin])
+    else {
+      setLoggedIn(false)
+    }
+  }, [loggedIn])
 
-  function register(data) {
-    return mainApi.register(data)
-      .then(() => {
-        console.log('Вы супер, все успешно')
-        history.push('/signin')
-      })
-      .catch(err => console.log(`Ошибка ${err}`))
+  function signOut() {
+      localStorage.removeItem('token');
+      setLoggedIn(false)
+      history.push('/')
   }
-  function login(data) {
-    return mainApi.login(data)
-      .then(res => {
-        setIsLogin(true)
-        mainApi.getUserInfo()
-          .then(res => {
-            setCurrentUser(res)
-          })
-          .catch(err => console.log(`Ошибка ${err}`))
-
-        localStorage.setItem('jwt', res.token);
-        history.push('/movies')
-      })
-      .catch(err => console.log(err.message))
-  }
-  function handleUserUpdate (userData) {
-    return mainApi.updateProfileUser(userData)
-      .then(res => {
-        setCurrentUser(res)
-      })
-      .catch(err => console.log(`Ошибка ${err}`))
-  }
-  function logout() {
-    localStorage.clear()
-    setCurrentUser({})
-    setIsLogin(false)
-    history.push('/')
-  }
-  // function handleSaveMovie(movie) {
-  //   mainApi.likeAndSaveMovie(movie)
-  //     .then(res => {
-  //       setSavedMovies([res, ...savedMovies]);
-  //     })
-  //     .catch(err => console.log(`Ошибка + ${err}`));
-  // }
-  // function handleUnSaveMovie(movieId) {
-  //   mainApi.removeSaveMovie(movieId)
-  //     .then(()=> {
-  //       setSavedMovies(savedMovies.filter(movie => movie._id !== movieId));
-  //   })
-  //     .catch(err => console.log('Ошибка ' + err));
-  // }
-  //
-
 
     return (
     <CurrentUserContext.Provider value={currentUser}>
       <Switch>
             <Route exact path='/'>
-                <Main isLoginIn={isLogin}/>
+                <Main loggedIn={loggedIn}/>
             </Route>
             <Route path='/signin'>
-                <Login
-                  onLogin={login}
-                />
+              {loggedIn ? <Redirect to='/movies' /> : <Login
+                onLogin={handleLogin}
+              />}
             </Route>
             <Route path='/signup'>
-                <Register
-                  onRegister={register}
-                />
+              {loggedIn ? <Redirect to='/movies'/> : <Register
+                onRegister={handleRegister}
+              />}
             </Route>
             <Route path='/saved-movies'>
               <SavedMovies
-                isLoginIn={isLogin}
-                // isPending={isPending}
-                // savedMovies={savedMovies}
+                loggedIn={loggedIn}
+                token={token}
               />
             </Route>
             <Route path='/movies'>
                 <Movies
-                    // onSaveMovie={handleSaveMovie}
-                    // onUnSaveMovie={handleUnSaveMovie}
-                  isLoginIn={isLogin}
-                    // isPending={isPending}
-                    // savedMovies={savedMovies}
+                  widthMode={widthMode}
+                  loggedIn={loggedIn}
+                  token={token}
                 />
             </Route>
             <Route path='/profile'>
               <Profile
-                isLoginIn={isLogin}
-                currentUser={currentUser}
-                onUpdateUser={handleUserUpdate}
-                onLogout={logout}
-                // onUnSaveMovie={handleUnSaveMovie}
-                // savedMovies={savedMovies}
-              />
+                loggedIn={loggedIn}
+                setCurrentUser={setCurrentUser}
+                token={token}
+                signOut={signOut}
+                />
             </Route>
       </Switch>
     </CurrentUserContext.Provider>

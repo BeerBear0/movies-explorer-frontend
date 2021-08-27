@@ -2,29 +2,35 @@ import { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom'
 import {IMAGE_URL} from "../../utils/const";
 
-function MoviesCard ({ movie, savedMovies, saveMovie, removeSaveMovie }) {
-  const [movieLikeStatus, setMovieLikeStatus] = useState (false)
+function MoviesCard ({
+    movie,
+    isSavedMoviePage,
+    onSaveMovie,
+    onUnSaveMovie,
+    isSave
+  }) {
+const [likeStatus, setLikeStatus] = useState(false)
+  // function errorLoadImg(evt) {
+  //   evt.target.src=errorImg;
+  // };
 
-  const isSavedMoviePage = useRouteMatch({ path: '/saved-movies', exact: true})
+  function handleSaveMovie() {
+    onSaveMovie(movie);
+    setLikeStatus(true)
+  }
 
-  useEffect(() => {
-    if(savedMovies.some(film => movie.movieId === film.movieId)) {
-      setMovieLikeStatus(true);
-    }
-  }, [])
+  function handleUnSave(isSavedMoviePage) {
+    onUnSaveMovie(movie._id || movie.id, isSavedMoviePage);
+    setLikeStatus(false)
+  }
 
-  function handlerLikeMovie() {
-      const isLiked = savedMovies.some(film => movie.movieId === film.movieId)
-      console.log(isLiked)
-      if(isLiked) {
-        saveMovie(movie._id)
-        setMovieLikeStatus( false)
-      }
-      else {
-        removeSaveMovie(movie);
-        setMovieLikeStatus(true)
-      }
-    }
+  const cardLikeButtonClassName = (
+    `card__like ${ isSave   ? 'card__like_active' : ''}`
+  );
+
+  const cardSaveButtonClassName = (
+    `card__like ${isSavedMoviePage ? 'card__delete': ''}`
+  )
 
     return (
         <div className='card'>
@@ -40,19 +46,10 @@ function MoviesCard ({ movie, savedMovies, saveMovie, removeSaveMovie }) {
             <div className='card__container'>
                 <h3 className='card__title'>{movie.nameRU}</h3>
 
-              {isSavedMoviePage ? (<button
-                className='card__like card__delete'
-                aria-label='Удалить фильм'
-                onClick={handlerLikeMovie}
-                type='button'
-                />) : (<button
-                className={`card__like ${movieLikeStatus ? 'card__like_active' : 'card__like_disable'}`}
-                aria-label='Сохранить фильм'
-                onClick={handlerLikeMovie}
-                type='button'
-                />
-                )}
-
+              <button
+                className={isSavedMoviePage ? cardSaveButtonClassName : cardLikeButtonClassName}
+                onClick={isSavedMoviePage || isSave || likeStatus ? () => handleUnSave(isSavedMoviePage) : handleSaveMovie}
+                type='button' />
             </div>
             <p className='card__time'>{movie.duration}</p>
         </div>

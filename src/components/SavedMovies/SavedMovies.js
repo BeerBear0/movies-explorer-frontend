@@ -5,7 +5,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { filterMovies} from "../../utils/const";
 import Footer from "../Footer/Footer";
 
-  function SavedMovies ({ onUnSaveMovie }){
+  function SavedMovies ({ onUnSaveMovie, savedMovies }){
     const [nothingFound, setNothingFound] = useState('');
     const [savedMoviesList, setSavedMoviesList] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);

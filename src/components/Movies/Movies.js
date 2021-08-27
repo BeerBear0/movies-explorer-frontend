@@ -7,136 +7,161 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { moviesApi } from "../../utils/MoviesApi";
-import { filterMovies } from "../../utils/const";
 import {mainApi} from "../../utils/MainApi";
+import Preloader from "../Preloader/Preloader";
 
-function Movies ({ isLoginIn }){
-  // ничего не найдено
-  const [nothingFound, setNothingFound] = useState(false);
-  // фильмы найденые по запросу
-  const [searchMovies, setSearchMovies] = useState([])
-  // отоброжаемые фильмы
-  const [displayMovies, setDisplayMovies] = useState([])
-  //прелоудер
-  const [isMoviesLoading, setIsMoviesLoading] = useState(false);
-  // короткометраджки
-  const [isShortMovies, setIsShortMovies] = useState(false);
-  // ошибка поиска
-  const [isError, setIsError] = useState(false);
-  // сохраненные фильмы
-  const [savedMovies, setSavedMovies] = useState([])
-  // кол-во фильмов в блоке
-  const [countMovies, setCountMovies] = useState({ total: 12, more: 3 })
-  // кнопка еще
-  const [isMoreBtn, setIsMoreBtn] = useState(false)
+const emptyArray = [];
 
-  const currentUser = useContext(CurrentUserContext);
+function Movies (props){
+  const [moviesCard, setMoviesCard] = useState([]);
+  const [filterText, setFilterText] = useState('');
+  const [amount, setAmount] = useState(props.widthMode);
+  const [btnState, setBtnState] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [emptyFilterTextSubmitted, setEmptyFilterTextSubmitted] = useState(false);
+  const [internalErrorHappened, setInternalErrorHappened] = useState(false);
+  const [checked, setChecked] = useState(false);
 
-  const location = useLocation();
+  function handleChangeCheckBox() {
+    setChecked(!checked);
+  }
+
+  const filteredMovies = filterMovies(moviesCard, checked, filterText, emptyArray);
+  const moviesNotFound = filteredMovies.length === 0 && filterText.length > 0;
+
+  function setFilterTextWrapper(value) {
+    localStorage.setItem('moviesFilterText', value)
+    setFilterText(value)
+  }
+
+  function foo() {
+    if(localStorage.getItem('moviesCards')) {
+      return Promise.resolve(JSON.parse(localStorage.getItem('moviesCard')))
+    }
+    else {
+      setIsLoading(true)
+      return moviesApi.getMovies()
+        .then(res => {
+          localStorage.setItem('moviesCards', JSON.stringify(res))
+          setIsLoading(false)
+          return res
+        })
+        .catch(err => {
+          console.log(err)
+          setInternalErrorHappened(true)
+          setIsLoading(false)
+        })
+    }
+  }
+  function loadMovies() {
+    const allMoviesPromise = foo();
+    allMoviesPromise.then(allMovies => {
+      mainApi.getSavedMovies(props.token)
+        .then(savedMovies => {
+          setMoviesCard(allMovies.map(movie => {
+            const foundSaveMovie = savedMovies.find((savedMovies) => savedMovies.movieId === movie.movieId)
+              if(foundSaveMovie !== null) {
+                return { ...movie, saved: true, savedId: foundSaveMovie._id}
+              }
+              else {
+                return { ...movie, saved: false }
+              }
+          }))
+        })
+        .catch(err => {
+          setInternalErrorHappened(true)
+          console.log(err)
+        })
+    })
+  }
+
+  useEffect(() =>{
+    loadMovies()
+  }, [])
 
   useEffect(() => {
-    if(location.pathname === '/saved-movies') {
-      setIsMoviesLoading(true)
-    }
-    mainApi.getSavedMovies()
-      .then(res => {
-        if(res) {
-          setSavedMovies(res);
-        }
-      })
-      .catch(err => console.lof(err))
-      .finally(() => {
-        setIsMoviesLoading(false)
-        setIsMoreBtn(false)
-      })
-  })
-  // чекбокс короткометражек
-  function filterShortMovies (movies) {
-    setIsShortMovies(!isShortMovies)
-    if(!isShortMovies) {
-      return movies.filter(movie => movie.duration <= 40)
+    if(filteredMovies.length <= amount) {
+      setBtnState(false)
     }
     else {
-      return movies.filter(movie => movie.duration > 40)
+      setBtnState(true)
+    }
+  }, [filteredMovies, amount])
+
+  function handleBtnClick() {
+    if(props.widthMode === 'desktop') {
+      setAmount(amount + 3)
+    }
+    else if (props.widthMode === 'tablet') {
+      setAmount(amount + 2)
+    }
+    else if (props.widthMode === 'mobile') {
+      setAmount(amount + 2)
     }
   }
-  const MoviesToRender = useMemo(
-    () => filterShortMovies(searchMovies),
-    [isShortMovies, searchMovies]
-  );
-
-  const savedMoviesToRender = useMemo(
-    () => filterShortMovies(savedMovies),
-    [isShortMovies, savedMovies]
-  );
-  const displayedMoviesToRender = useMemo(
-    () => filterShortMovies(displayMovies),
-    [isShortMovies, displayMovies]
-  );
-
-  //поиск фильма
-  function searchMoviesByKey (movies, searchKey) {
-    if(!searchKey) {
-      return
+  function calcStartAmount(widthMode) {
+    if (widthMode === 'desktop') {
+      return 12;
+    } else if (widthMode === 'tablet') {
+      return 8;
     }
-    const searchMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(searchKey.toLowerCase()));
-    if(searchMovies.length === 0) {
-      setIsError(true)
-    } else {
-      setIsError(false)
-    }
-    setSearchMovies(searchMovies);
+    return 5;
   }
-  // клик по кнопке поиска
-  function handleSearchBtn({ searchKey }) {
-    if(location.pathname === '/movies') {
-     if(!localStorage.getItem('movies')) {
-       setIsMoviesLoading(true)
-       moviesApi.getMovies()
-         .then(movies => {
-           localStorage.setItem('movies', JSON.stringify(movies))
-           searchMoviesByKey(movies, searchKey)
-         })
-         .catch(err => console.log(`Ошибка ${err}`))
-         .finally(() => {
-           setIsMoviesLoading(false);
-         })
-     }
-     searchKey(localStorage.getItem('movies') ? JSON.parse(localStorage.movies) : [], searchKey)
+
+  function handleSubmit(value) {
+    setFilterTextWrapper(value)
+    setAmount(calcStartAmount(props.widthMode))
+  }
+
+  function handleLikeMovieCard(movieId, saveId) {
+    const newMovies = moviesCard.map(movie => {
+      if(movie.movieId === movieId) {
+        movie.saved = !movie.saved;
+        movie.savedId = saveId;
+        return movie
+      }
+      else {
+        return movie
+      }
+    })
+    setMoviesCard(newMovies)
+  }
+
+  function handleSavedMoviesBtn(movieCard) {
+    const cardObj = {
+      country: movieCard.country ?? 'unknown',
+      director: movieCard.director,
+      duration: movieCard.duration,
+      year: movieCard.year,
+      description: movieCard.description,
+      image: movieCard.image,
+      trailer: movieCard.trailer,
+      thumbnail: movieCard.thumbnail,
+      nameRU: movieCard.nameRU,
+      nameEN: movieCard.nameEN || 'unknown',
+      movieId: movieCard.movieId,
+      owner: movieCard.owner,
+    }
+    if(!movieCard.saved) {
+      mainApi.saveMovie(cardObj, props.token)
+        .then(newLikeMovieCard => {
+          handleLikeMovieCard(cardObj.movieId, newLikeMovieCard._id)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
     else {
-      setSavedMovies(savedMovies.filter(movie => movie.nameRU.toLowerCase().includes(searchKey.toLowerCase())));
-      setIsMoviesLoading(false)
+      mainApi.deleteMovie(movieCard.savedId, props.token)
+        .then(() => {
+          handleLikeMovieCard(cardObj.movieId)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
-  //  кол-во фильмов в блоке
-  function countMoviesDisplay () {
-    const screenWidth = window.screen.width;
-    if (screenWidth <= 425) {
-      setCountMovies({ total: 5, more: 2 })
-    } else if (screenWidth <= 768) {
-      setCountMovies({ total: 8, more: 2 })
-    } else {
-      setCountMovies({ total: 12, more: 3 })
-    }
-  }
-
-  // добавление фильма в сохр
-  function saveMovie(movie) {
-    mainApi.likeAndSaveMovie(movie)
-      .then(res => {
-        setSavedMovies([res, ...savedMovies])
-      })
-      .catch(err => console.log(`Ошибка ${err}`))
-  }
-  //удаление фильмы из сохр
-  function removeSaveMovie(movieId) {
-    mainApi.removeSaveMovie(movieId)
-      .then(() => {
-        setSavedMovies(savedMovies.filter(movie => movie._id !== movieId))
-      })
-      .catch(err => console.log(`Ошибка ${err}`))
-  }
+  const errorText = createErrorText(emptyFilterTextSubmitted, moviesNotFound, internalErrorHappened)
 
   return (
         <section className='movies'>
@@ -147,31 +172,56 @@ function Movies ({ isLoginIn }){
                 headerHref2='/saved-movies'
             />
             <SearchForm
-               onSearchMovies={handleSearchBtn}
-               isShortMovies={isShortMovies}
-               setIsShortMovies={setIsShortMovies}
+              filterMoviesCards={moviesCard}
+              checked={checked}
+              handleChangeCheckBox={handleChangeCheckBox}
+              setEmptyFilterTextSubmitted={setEmptyFilterTextSubmitted}
+              initialValue={filterText}
+              restoreFromLocalStorage={true}
             />
-            {isError ? <p className='search-form-error'>
-              Во время запроса произошла ошибка. Пропробуйте еще раз.
-            </p> : <MoviesCardList
-              nothingFound={nothingFound}
-              movies={MoviesToRender}
-              savedMovies={savedMoviesToRender}
-              displayedMovies={displayedMoviesToRender}
-              setDispayedMovies={setDisplayMovies}
-              isMoreBtn={isMoreBtn}
-              setIsMoreBtn={setIsMoreBtn}
-              saveMovie={saveMovie}
-              removeSaveMovie={removeSaveMovie}
-              isMoviesLoading={isMoviesLoading}
-              countMovies={countMovies}
-              setCountMovies={setCountMovies}
-              />
-            }
+            {isLoading && <Preloader />}
+            {errorText && <p>{errorText}</p>}
+            {!errorText && <MoviesCardList
+              moviesCards={filteredMovies}
+              amount={amount}
+              itIsSavedMovies={false}
+              handleMovieCardBtn={handleSavedMoviesBtn}
+              btnState={btnState}
+              handleBtnClick={handleBtnClick}
+            />
+          }
 
             <Footer />
         </section>
     )
+}
+
+function createErrorText(emptyFilterTextSubmitted, moviesNotFound, internalErrorHappened) {
+  if (emptyFilterTextSubmitted) {
+    return 'Нужно ввести ключевое слово'
+  }
+
+  if (moviesNotFound) {
+    return "Ничего не найдено"
+  }
+
+  if (internalErrorHappened) {
+    return "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."
+  }
+}
+
+function filterMovies(allMovies, onlyShorts, filterText, defaultValue) {
+  if (allMovies == null || filterText.length === 0) {
+    return defaultValue
+  }
+
+  return allMovies.filter(movie => {
+    if (onlyShorts) {
+      return movie.nameRU.toLowerCase().includes(filterText.toLowerCase()) && movie.duration <= 40
+    } else {
+      return movie.nameRU.toLowerCase().includes(filterText.toLowerCase())
+    }
+  })
 }
 
 export default Movies;
