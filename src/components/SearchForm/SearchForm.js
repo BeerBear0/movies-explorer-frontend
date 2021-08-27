@@ -1,33 +1,32 @@
 import { useState } from 'react';
 
-function SearchForm ({ onSearchMovies, isShortMovies, onCheckBoxClick }) {
-    //поисковой запрос
-    const [isSearch, setIsSearch] = useState('');
+function SearchForm ({ onSearchMovies, isShortMovies, onChekBoxClick }) {
+  const [filmQuery, setfilmQuery] = useState('');
 
-    const handleChangeSearch = (evt) => {
-      setIsSearch(evt.target.value)
-    }
+  function handleChangeQuery(evt) {
+    setfilmQuery(evt.target.value);
+  }
 
-    const handleSearchBtn = (evt) => {
-      evt.preventDefault();
-      onSearchMovies(isSearch);
-    }
+  function handleSubmitSearch(evt) {
+    evt.preventDefault();
+    onSearchMovies(filmQuery)
+  }
 
     return(
         <div className='search-form'>
             <form
               className='search-form__container'
-              onSubmit={handleSearchBtn}
+              onSubmit={handleSubmitSearch}
             >
                 <div className='search-form__icon-input' />
                 <input
-                  value={isSearch || ''}
-                  type='text'
-                  name='search-btn__query-input'
-                  onChange={handleChangeSearch}
-                  className='search-form__input'
-                  placeholder='Фильм'
-                  minLength='1'
+                  value={filmQuery || ''}
+                  onChange={handleChangeQuery}
+                  name="search-form__query-input"
+                  type="text"
+                  placeholder="Фильм"
+                  className="search-form__query"
+                  minLength="1"
                   required
                 />
                 <div className='search-form__btn-container'>
@@ -39,7 +38,7 @@ function SearchForm ({ onSearchMovies, isShortMovies, onCheckBoxClick }) {
             <input
                 type='checkbox'
                 className='search-form__checkbox'
-                onChange={onCheckBoxClick}
+                onChange={onChekBoxClick}
             />
             <span className='search-form__checkbox-text'>Короткометражки</span>
             </div>
