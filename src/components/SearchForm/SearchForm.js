@@ -22,10 +22,10 @@ function SearchForm ({ onSearchMovies, isShortMovies, onChekBoxClick }) {
                 <input
                   value={filmQuery || ''}
                   onChange={handleChangeQuery}
-                  name="search-form__query-input"
+                  name="search-form__input"
                   type="text"
                   placeholder="Фильм"
-                  className="search-form__query"
+                  className="search-form__input"
                   minLength="1"
                   required
                 />
