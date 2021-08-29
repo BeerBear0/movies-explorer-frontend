@@ -1,7 +1,7 @@
 import Preloader from "../Preloader/Preloader";
 import {useFormWithValidation} from "../../utils/useFormWithValidation";
 
-function Login ({ onLogin, isPending }){
+function Login (props){
   const { values, errors, isValid, handleChange, errorMessage } = useFormWithValidation();
 
   function handleLoginSubmit(evt) {
