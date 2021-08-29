@@ -19,12 +19,12 @@ function Register ({ onRegister, errorMessage, isPending }){
               <p className='auth-form__description'>Имя</p>
               <input
                   onChange={handleChange}
-                  value={values.name || ''}
+                  // value={values.name || ''}
                   className='auth-form__input auth-form__input_name'
                   type='name'
                   placeholder='Введите имя'
                   minLength='2'
-                  required
+                  // required
               />
               <p className='auth-form__description'>E-mail</p>
               <input
