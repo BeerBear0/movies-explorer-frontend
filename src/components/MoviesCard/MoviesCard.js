@@ -1,57 +1,91 @@
-import { useState, useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom'
+import React from 'react';
+import { useLocation } from 'react-router-dom'
 import {IMAGE_URL} from "../../utils/const";
 
-function MoviesCard ({
-    movie,
-    isSavedMoviePage,
-    onSaveMovie,
-    onUnSaveMovie,
-    isSave
-  }) {
-const [likeStatus, setLikeStatus] = useState(false)
-  // function errorLoadImg(evt) {
-  //   evt.target.src=errorImg;
-  // };
+function MoviesCard (props) {
+  const [isDeleteButtonVisible, setIsDeleteButtonVisible] = React.useState(false);
+  const [isSaved, setIsSaved] = React.useState(false);
 
-  function handleSaveMovie() {
-    onSaveMovie(movie);
-    setLikeStatus(true)
+  const movie = {
+    country : props.movie.country || 'Не указано',
+    director: props.movie.director || 'Не указано',
+    duration: props.movie.duration || 0,
+    year: props.movie.year || 'Не указано',
+    description: props.movie.description || 'Не указано',
+    image: `${props.movie.image === null ? `` : `https://api.nomoreparties.co${props.movie.image?.url}`}`,
+    trailer: props.movie?.trailerLink,
+    nameRU: props.movie.nameRU || 'Не указано',
+    nameEN: props.movie.nameEN || 'Не указано',
+    thumbnail: `${props.movie.image === null ? `` : `https://api.nomoreparties.co${props.movie.image?.formats?.thumbnail?.url}`}`,
+    movieId: props.movie.id,
   }
 
-  function handleUnSave(isSavedMoviePage) {
-    onUnSaveMovie(movie._id || movie.id, isSavedMoviePage);
-    setLikeStatus(false)
+  const editedDuration = `${Math.trunc(movie.duration/60)}ч${movie.duration % 60}м`;
+  const image = `${props.movie.image === null ? `` : `https://api.nomoreparties.co${props.movie.image?.url}`}`;
+  const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+  const currentMovie = savedMovies.find((movie) => movie.nameRU === props.movie.nameRU);
+
+  const location = useLocation();
+
+  function handleCardMouseOver() {
+    setIsDeleteButtonVisible(true);
   }
 
-  const cardLikeButtonClassName = (
-    `card__like ${ isSave   ? 'card__like_active' : ''}`
-  );
+  function handleCardMouseOut() {
+    setIsDeleteButtonVisible(false);
+  }
 
-  const cardSaveButtonClassName = (
-    `card__like ${isSavedMoviePage ? 'card__delete': ''}`
-  )
+  function handleLikeButtonCLick() {
+    props.onMovieSave(movie);
+    setIsSaved(true);
+  }
 
-    return (
+  function handleDisLike() {
+    setIsSaved(false);
+    console.log(currentMovie)
+    props.onDeleteMovie(currentMovie._id);
+  }
+
+  function handleDeleteMovie() {
+    props.onDeleteMovie(props.movie._id);
+    setIsSaved(false);
+  }
+
+  React.useEffect(() => {
+    if(currentMovie) {
+      setIsSaved(true)
+    }
+
+  }, [currentMovie, location])
+
+
+
+  return (
         <div className='card'>
           <a
-          href={isSavedMoviePage ? movie.trailer : movie.trailerLink}
+          href={props.saved ? props.movie.trailer : props.movie.trailerLink}
           target='_blank'
           rel='noreferrer'>
           <img
-                src={ isSavedMoviePage ? movie.image : `${IMAGE_URL}${movie.image.url}`}
-                alt={movie.nameRU}
+                src={ props.saved ? props.movie.image : image}
+                alt={props.movie.nameRU}
                 className='card__image'/>
           </a>
-            <div className='card__container'>
-                <h3 className='card__title'>{movie.nameRU}</h3>
-
-              <button
-                className={isSavedMoviePage ? cardSaveButtonClassName : cardLikeButtonClassName}
-                onClick={isSavedMoviePage || isSave || likeStatus ? () => handleUnSave(isSavedMoviePage) : handleSaveMovie}
-                type='button' />
+            <div className='card__container'
+                  onMouseEnter={handleCardMouseOver}
+                  onMouseLeave={handleCardMouseOut}>
+                <h3 className='card__title'>{props.movie.nameRU}</h3>
+              {props.saved ?
+                (<button
+                  className={`card__like ${isDeleteButtonVisible ? 'movies__delete' : ''}`}
+                  onClick={handleDeleteMovie}
+                  type='button' />) :
+                (<button
+                className={`card__like ${isSaved ? 'card__like_active' : ''}`}
+                onClick={isSaved ? handleDisLike : handleLikeButtonCLick}
+                />)}
             </div>
-            <p className='card__time'>{movie.duration}</p>
+            <p className='card__time'>{props.movie.duration}</p>
         </div>
     )
 }

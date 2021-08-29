@@ -27,8 +27,12 @@ html {
   margin: 0 auto;
 
 }
-
-
+.display {
+  display: block;
+}
+.no-display {
+  display: none;
+}
 
 
 

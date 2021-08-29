@@ -3,104 +3,81 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
 
 function MoviesCardList (props) {
-  const {
-    movies,
-    nothingFound,
-    moviesLoading,
-    isSavedMoviePage,
-    onSaveMovie,
-    onUnSaveMovie,
-    savedMovies
-  } = props;
+  const [initialCardsNumber, setInitialCardsNumber] = useState(() => {
+    const windowSize = window.innerWidth;
+    if(windowSize < 720) {
+      return 5
+    } else if(windowSize < 920) {
+      return 8
+    } else if(windowSize < 1279) {
+      return 8 }
+    else if(windowSize > 1279) {
+      return 12
+    }
+  } );
+  const [moreCardsNumber, setMoreCardsNumber] = useState(() => {
+    const windowSize = window.innerWidth;
+    if(windowSize < 720) {
+      return 2;
+    } else if(windowSize < 920) {
+      return 2
+    } else if(windowSize < 1279) {
+      return 3
+    } else if(windowSize > 1279) {
+      return 3
+    }
+  });
 
+  function handleScreenWidth () {
+    const windowSize = window.innerWidth;
+    if(windowSize < 720) {
+      setInitialCardsNumber(5)
+    } else if(windowSize < 920) {
+      setInitialCardsNumber(8)
+    } else if(windowSize < 1279) {
+      setInitialCardsNumber(8)
+    } else if(windowSize > 1279) {
+      setInitialCardsNumber(12)
+    }
+  }
 
-  const [cardsShowDetails, setCardsShowDetails] = useState({ total: 12, more: 4 });
-  const [movieList, setMovieList] = useState([]);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const displayedMovies = props.movies?.slice(0, initialCardsNumber);
 
-  function checkSavedMovie(savedMovies, movie) {
-    let save = savedMovies.find(savedMovie => savedMovie.movieId === movie.id);
-    return save;
+  function handleMoviesIncrease() {
+    setInitialCardsNumber(prevState => {return prevState + moreCardsNumber});
   }
 
   useEffect(() => {
-    function handleScreenResize() {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', resizeTimer, false);
-
-    let resizeTimeout;
-
-    function resizeTimer() {
-      if (!resizeTimeout ) {
-        resizeTimeout = setTimeout(() => {
-          resizeTimeout = null;
-          handleScreenResize();
-        }, 1000);
-      }
-    };
-
-    return () => window.removeEventListener('resize', handleScreenResize);
-  }, [screenWidth]);
-
-  useEffect(() => {
-    if (screenWidth >= 1280) {
-      setCardsShowDetails({ total: 12, more: 4 })
-    }
-    else if (screenWidth <= 768 && screenWidth > 420) {
-      setCardsShowDetails({ total: 8, more: 2 })
-    }
-    else {
-      setCardsShowDetails({ total: 5, more: 2 })
-    }
-
-  }, [screenWidth]);
-
-  useEffect(() => {
-    if (movies.length) {
-      const tempMovies = movies.filter((item, i) => i < cardsShowDetails.total);
-      setMovieList(tempMovies);
-    }
-  }, [movies, cardsShowDetails.total]);
-
-  function handleClickMoreMovies() {
-    const start = movieList.length;
-    const end = start + cardsShowDetails.more;
-    const additional = movies.length - start;
-
-    if (additional > 0) {
-      const newCards = movies.slice(start, end);
-      setMovieList([...movieList, ...newCards]);
-    }
-  };
+    window.addEventListener('resize', handleScreenWidth);
+  }, []);
 
   return (
     <>
-      {moviesLoading ? <Preloader /> :
+       <Preloader isSearching={props.isSearching} />
         <div className='card-list'>
-          { nothingFound ? <p className='nothing-found'>По вашему запросу ничего не найдено</p> :
+          <span className={`${props.isErrorActive ? 'display ' : 'no-display'}`}>Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</span>
+          <span className={`${props.notFound ? 'display' : 'no-display'}`}>По вашему запросу ничего не найдено</span>
+          <span className={`${props.saved && props.movies.length === 0}` ? 'display' : 'no-display'}>Вы пока что ничего не добавили в избранное</span>
             <div className='card-list__grid-container'>
-              {movieList.map(movie => {
+              {displayedMovies.map(movie => {
                 return (
                   <MoviesCard
-                    key={movie.id || movie._id}
                     movie={movie}
-                    isSavedMoviePage={isSavedMoviePage}
-                    onSaveMovie={onSaveMovie}
-                    onUnSaveMovie={onUnSaveMovie}
-                    isSave={checkSavedMovie(savedMovies, movie)}/>
+                    key={props.saved ? movie.movieId : movie.id}
+                    saved={props.saved}
+                    onMovieSave={props.onMovieSave}
+                    onDeleteMovie={props.onDeleteMovie}
+                    savedMovies={props.savedMovies}/>
                 );
               })}
             </div>
-          }
-          {isSavedMoviePage|| movieList.length === movies.length  ? '' :
+
             <button
               type='button'
               aria-label='Обновить фильмы'
-              className='card-list__btn'
-              onClick={handleClickMoreMovies}
-            >Еще</button>}
+              className={`card - list__btn ${props.saved ? 'no-display' : `${props.movies?.length === displayedMovies?.length ? 'no-display' : ''}`}`}
+              onClick={handleMoviesIncrease}
+            >Еще</button>
 
         </div>
       }

@@ -61,9 +61,9 @@ class MainApi {
       headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({
-        "name": name,
-        "password": password,
-        "email": email
+        name: name,
+        email: email,
+        password: password,
       })
     }).then((res) => {
       return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));

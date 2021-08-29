@@ -5,44 +5,8 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { filterMovies} from "../../utils/const";
 import Footer from "../Footer/Footer";
 
-  function SavedMovies ({ onUnSaveMovie, savedMovies }){
-    const [nothingFound, setNothingFound] = useState('');
-    const [savedMoviesList, setSavedMoviesList] = useState([]);
-    const [filteredMovies, setFilteredMovies] = useState([]);
-    const [isShortMovies, setIsShortMovies] = useState('');
+  function SavedMovies (props){
 
-
-
-    function handleSetFilteredMovies(savedMovies, userQuery, isShortMovies) {
-      let moviesList = filterMovies(savedMovies, userQuery, isShortMovies);
-      moviesList.length === 0 ? setNothingFound(true) : setNothingFound(false);
-      if(isShortMovies) {
-       return  moviesList.filter(movie => movie.duration <= 40)
-      }
-      setSavedMoviesList(moviesList)
-    }
-
-    function handleSearchFilms(inputValue) {
-      setFilteredMovies(savedMovies);
-      handleSetFilteredMovies(filteredMovies, inputValue, isShortMovies);
-    }
-    function handleShortFilmsCheck(inputValue) {
-        setIsShortMovies(!isShortMovies);
-        if(!isShortMovies) {
-          setSavedMoviesList(savedMoviesList.filter(movie => movie.duration <= 40))
-        } else {
-          setSavedMoviesList(savedMovies)
-        }
-    }
-    useEffect(() => {
-      if(savedMovies.length !== 0) {
-        setNothingFound(false);
-        setSavedMoviesList(savedMovies);
-      }
-      else {
-        setNothingFound(true);
-      }
-    }, [savedMovies])
     return (
         <>
             <Header
@@ -52,15 +16,15 @@ import Footer from "../Footer/Footer";
                 headerHref2='/saved-movies'
             />
             <SearchForm
-              onSearchMovies={handleSearchFilms}
-              onCheckBoxClick={handleShortFilmsCheck}
+              onSearchSavedMovies={props.onSearchSavedMovies}
+              saved={true}
+              onShortMoviesCheck={props.onShortMoviesCheck}
+              isChecked={props.isShortMoviesChecked}
             />
             <MoviesCardList
-              nothingFound={nothingFound}
-              isSavedMoviePage={true}
-              movies={savedMoviesList}
-              onUsSavemovie={onUnSaveMovie}
-              savedMovies={savedMovies}
+              saved={true}
+              movies={props.movies}
+              onDeleteMovie={props.onDeleteMovie}
             />
             <Footer />
         </>

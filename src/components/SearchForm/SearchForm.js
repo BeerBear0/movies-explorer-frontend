@@ -1,27 +1,36 @@
-import { useState } from 'react';
+import React from 'react';
 
-function SearchForm ({ onSearchMovies, isShortMovies, onChekBoxClick }) {
-  const [filmQuery, setfilmQuery] = useState('');
+function SearchForm (props) {
+  const [search, setSearch] = React.useState('');
+  const [isSearchValid, setIsSearchValid] = React.useState(true);
 
-  function handleChangeQuery(evt) {
-    setfilmQuery(evt.target.value);
+  function handleSearchChange(e) {
+    setSearch(e.target.value);
+    setIsSearchValid(e.target.checkValidity())
   }
 
-  function handleSubmitSearch(evt) {
-    evt.preventDefault();
-    onSearchMovies(filmQuery)
+  function handleSearchSavedMovies(e) {
+    e.preventDefault();
+
+    props.onSearchSavedMovies(search);
+  }
+
+  function handleSearchMovies(e) {
+    e.preventDefault();
+
+    props.onSearchMovies(search);
   }
 
     return(
         <div className='search-form'>
             <form
               className='search-form__container'
-              onSubmit={handleSubmitSearch}
+              onSubmit={props.saved ? handleSearchSavedMovies : handleSearchMovies}
             >
                 <div className='search-form__icon-input' />
                 <input
-                  value={filmQuery || ''}
-                  onChange={handleChangeQuery}
+                  value={search || ''}
+                  onChange={handleSearchChange}
                   name="search-form__input"
                   type="text"
                   placeholder="Фильм"
@@ -38,7 +47,8 @@ function SearchForm ({ onSearchMovies, isShortMovies, onChekBoxClick }) {
             <input
                 type='checkbox'
                 className='search-form__checkbox'
-                onChange={onChekBoxClick}
+                onChange={props.onShortMoviesCheck}
+                checked={props.isChecked}
             />
             <span className='search-form__checkbox-text'>Короткометражки</span>
             </div>
