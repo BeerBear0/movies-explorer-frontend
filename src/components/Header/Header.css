@@ -7,11 +7,11 @@
     position: relative;
 }
 .header__logged-in {
-  justify-content: start;
+    justify-content: start;
 }
 .header__logo_logged-in {
-  margin-left: 70px;
- }
+    margin-left: 70px;
+}
 
 .header__logo {
     width: 38px;
@@ -23,15 +23,15 @@
     background-repeat: no-repeat;
 }
 .header__logo_home {
-  margin-right: auto;
+    margin-right: auto;
 }
 @media (max-width: 1024px) {
-  .header__logo {
-    margin-left: 0;
-  }
-  .header__logo_logged-in {
-    margin-left: 30px;
-  }
+    .header__logo {
+        margin-left: 0;
+    }
+    .header__logo_logged-in {
+        margin-left: 30px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -40,6 +40,6 @@
         margin-right: auto;
     }
     .header__logo_logged-in {
-      margin-left: 14px;
+        margin-left: 14px;
     }
 }

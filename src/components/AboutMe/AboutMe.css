@@ -74,19 +74,19 @@
 }
 
 @media (max-width: 760px) {
-  .aboutme__container {
-    display: grid;
-  }
-  .aboutme__description {
-    grid-row: 2;
-    margin: 0 auto;
-  }
-  .aboutme__photo {
-    grid-row: 1;
-    margin: 60px auto 0 auto;
-    width: 292px;
-    height: 352px;
-  }
+    .aboutme__container {
+        display: grid;
+    }
+    .aboutme__description {
+        grid-row: 2;
+        margin: 0 auto;
+    }
+    .aboutme__photo {
+        grid-row: 1;
+        margin: 60px auto 0 auto;
+        width: 292px;
+        height: 352px;
+    }
 }
 
 @media (max-width: 425px) {

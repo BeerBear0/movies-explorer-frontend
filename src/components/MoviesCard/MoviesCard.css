@@ -48,17 +48,25 @@
 }
 .card__like_active {
     background-image: url("../../images/likeActive-min.svg");
+
 }
 /*.card__like_disabled { */
 /*    background-image: ;*/
 /*}*/
 .card__like:hover {
-  opacity: .8;
+    opacity: .8;
 }
 .card__delete {
     background-image: url("../../images/delete-card-min.png");
     width: 9px;
-    height: 9px ;
+    height: 9px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    background-size: cover;
+    margin: 3px 24px auto auto;
+    cursor: pointer;
+    border: none;
 }
 .card__delete:hover {
     display: block;
@@ -67,12 +75,16 @@
 .card:hover+.card__delete {
     display: block;
 }
+.card__like-display-none {
+    border: none;
+    background-color: #ffffff;
+}
 
 @media (max-width: 768px) {
-  .card {
-    width: 339px;
-  }
-  .card__image {
+    .card {
+        width: 339px;
+    }
+    .card__image {
         /*width: 339px;*/
         margin-bottom: 14px;
     }
@@ -85,23 +97,23 @@
 }
 
 @media (max-width: 425px) {
-  .card {
-    margin: 0;
-    width: 300px;
-    max-width: 168px;
-  }
+    .card {
+        margin: 0;
+        width: 300px;
+        max-width: 168px;
+    }
 
-  .card__image {
-    width: 300px;
-  }
+    .card__image {
+        width: 300px;
+    }
 
-  .card__title {
-    font-size: 12px;
-    line-height: 15px;
-  }
+    .card__title {
+        font-size: 12px;
+        line-height: 15px;
+    }
 
-  .card__time {
-    font-size: 10px;
-    line-height: 12px;
-  }
+    .card__time {
+        font-size: 10px;
+        line-height: 12px;
+    }
 }

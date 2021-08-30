@@ -1,0 +1,45 @@
+.search-form__checkbox-container {
+    display: flex;
+    margin-left: auto;
+    margin-right: 30px;
+
+}
+.search-form__checkbox {
+    margin: auto auto auto 30px;
+    background-image: url("../../images/checkboxdisab-min.png");
+    width: 36px;
+    height: 20px;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+.search-form__checkbox:checked {
+    background-image: url("../../images/checkboxactiv-min.png");
+}
+.search-form__checkbox-text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+    margin: auto auto auto 14px;
+}
+@media(max-width: 1024px) {
+    .search-form__checkbox {
+        margin-left: 19px;
+    }
+}
+
+@media(max-width: 767px) {
+    .search-form__checkbox-container {
+        justify-content: center;
+        background-color: white;
+        width: 100%;
+        padding-top: 46px;
+        margin: 0;
+    }
+    .search-form__checkbox {
+        margin: 0 0 0 auto;
+    }
+}

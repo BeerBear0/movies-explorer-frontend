@@ -49,6 +49,10 @@
     padding: 20px;
 }
 
+.preloader__no-display {
+    display: none;
+}
+
 .preloader__container {
     width: 100px;
     height: 100px;
@@ -77,12 +81,12 @@
 }
 
 .preloader__round::after {
-    background: black;
+    background: white;
     animation: preloader-inside-white 1s ease-in-out infinite;
 }
 
 .preloader__round::before {
     z-index: 10;
-    background: #2BE080;
+    background: #2BE080;;
     animation: preloader-inside-red 1s ease-in-out infinite;
 }

@@ -1,6 +1,8 @@
 import Navigation from "../Navigation/Navigation";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import { useLocation } from 'react-router-dom';
+import "./Header.css"
+
 function Header ({ linkNum1, linkNum2, headerHref1, headerHref2 }){
 
     const location = useLocation();

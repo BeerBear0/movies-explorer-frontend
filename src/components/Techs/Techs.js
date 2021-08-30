@@ -1,36 +1,21 @@
-function Techs (){
-    return (
-        <div className='techs'>
-            <h3 className='project__title'>Технологии</h3>
-            <a name='techs' />
-            <div className='techs__container'>
-                <h3 className='techs__title'>7 технологий</h3>
-                <p className='techs__text'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
-                <div className='techs__list'>
-                    <div className='techs__unit-container'>
-                        <p className='techs__unit'>HTML</p>
-                    </div>
-                    <div className='techs__unit-container'>
-                        <p className='techs__unit'>CSS</p>
-                    </div>
-                    <div className='techs__unit-container'>
-                        <p className='techs__unit'>JS</p>
-                    </div>
-                    <div className='techs__unit-container'>
-                        <p className='techs__unit'>React</p>
-                    </div>
-                    <div className='techs__unit-container'>
-                        <p className='techs__unit'>Git</p>
-                    </div>
-                    <div className='techs__unit-container'>
-                        <p className='techs__unit'>Express.js</p>
-                    </div>
-                    <div className='techs__unit-container'>
-                        <p className='techs__unit'>mongoDB</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+import './Techs.css';
+
+function Techs() {
+    return(
+        <section className="techs">
+            <h2 className="techs__heading section__heading">Технологии</h2>
+            <h3 className="techs__title">7 технологий</h3>
+            <p className="techs__subtitle">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
+            <ul className="techs__list">
+                <li className="techs__list-item">HTML</li>
+                <li className="techs__list-item">CSS</li>
+                <li className="techs__list-item">JS</li>
+                <li className="techs__list-item">React</li>
+                <li className="techs__list-item">Git</li>
+                <li className="techs__list-item">Express.js</li>
+                <li className="techs__list-item">mongoDB</li>
+            </ul>
+        </section>
     )
 }
 

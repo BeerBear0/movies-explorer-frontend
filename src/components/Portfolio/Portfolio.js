@@ -1,5 +1,5 @@
-
-function Portfolio (){
+import './Portfolio.css';
+function Portfolio() {
     return (
         <div className='portfolio'>
             <h6 className='portfolio__title'>Портфолио</h6>
