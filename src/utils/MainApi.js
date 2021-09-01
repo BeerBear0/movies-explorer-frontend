@@ -24,7 +24,6 @@ export function authorize (password, email) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        // credentials: 'include',
         body: JSON.stringify({
             "password": password,
             "email": email
@@ -47,7 +46,6 @@ export function getUserData(token) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
-        // credentials: 'include'
     })
         .then(res => res.json())
         .then(data => data)
@@ -61,7 +59,6 @@ export function editUserData(token, name, email) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
-        // credentials: 'include',
         body: JSON.stringify({
             name: name,
             email: email
@@ -79,7 +76,6 @@ export function getSavedMovies(token) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
-        // credentials: 'include',
     })
         .then(res => res.json())
         .then(data => data)
@@ -94,7 +90,6 @@ export function saveMovie(token, movie) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
-        // credentials: 'include',
         body: JSON.stringify({
             country: movie.country,
             director: movie.director,
@@ -121,7 +116,6 @@ export function deleteMovie(token, movieId) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
-        // credentials: 'include',
     })
         .then(res => res.json())
         .then(data => data)
