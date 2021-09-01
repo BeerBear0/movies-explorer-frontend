@@ -8,7 +8,7 @@ export function register (name, password, email) {
             'Content-Type': 'application/json'
         },
         // mode: "no-cors",
-        // credentials: 'include',
+        credentials: 'include',
         body: JSON.stringify({
             "name": name,
             "password": password,
@@ -30,6 +30,8 @@ export function authorize (password, email) {
             "email": email
         }),
         // mode: "no-cors",
+        credentials: 'include',
+
     })
         .then((response => response.json()))
         .then((data) => {
@@ -48,6 +50,8 @@ export function getUserData(token) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
+        credentials: 'include',
+
         // mode: "no-cors",
     })
         .then(res => res.json())
@@ -66,6 +70,8 @@ export function editUserData(token, name, email) {
             name: name,
             email: email
         }),
+        credentials: 'include',
+
         // mode: "no-cors",
     })
         .then(res => res.json())
@@ -80,6 +86,8 @@ export function getSavedMovies(token) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
+        credentials: 'include',
+
         // mode: "no-cors",
     })
         .then(res => res.json())
@@ -108,7 +116,9 @@ export function saveMovie(token, movie) {
             nameEN: movie.nameEN,
             thumbnail: movie.thumbnail,
             movieId: movie.movieId
-        })
+        }),
+        credentials: 'include',
+
     })
         .then(res => res.json())
         .then(data => data)
@@ -122,6 +132,7 @@ export function deleteMovie(token, movieId) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
+        credentials: 'include',
         // mode: "no-cors",
     })
         .then(res => res.json())
