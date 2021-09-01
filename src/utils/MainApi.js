@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.movies.nikko.nomoredomains.monster';
+const BASE_URL = 'http://api.movies.nikko.nomoredomains.monster';
 // const BASE_URL = 'http://localhost:3000';
 export function register (name, password, email) {
     return fetch(`${BASE_URL}/signup`, {

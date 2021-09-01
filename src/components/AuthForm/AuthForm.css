@@ -14,6 +14,7 @@
     line-height: 29px;
     color: #000000;
     margin-bottom: 40px;
+    text-align: center;
 }
 
 .auth-form__form {
@@ -21,10 +22,10 @@
 }
 
 .auth-form__fields {
-    width: 100%;
+    width: 260px;
+    margin: 0 auto 70px auto;
     border: none;
     padding: 0;
-    margin: 0 0 69px 0;
 }
 .auth-form__description {
     font-style: normal;
@@ -148,6 +149,12 @@
     }
     .auth-form__subtitle {
         margin-bottom: 232px;
+    }
+}
+@media (max-width: 767px) {
+    .auth-form__logo {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
