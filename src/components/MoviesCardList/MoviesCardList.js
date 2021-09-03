@@ -52,16 +52,15 @@ function    MoviesCardList(props) {
     useEffect(() => {
         window.addEventListener('resize', handleScreenWidth);
     }, []);
-
+    console.log(displayedMovies)
     return (
         <section className="card-list">
             <Preloader isSearching={props.isSearching} />
             <span className={` ${props.isErrorActive ? 'card-list__error' : 'no-display'}`}>Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</span>
             <span className={` ${props.notFound ? 'card-list__not-found' : 'no-display'}`}>Ничего не найдено</span>
             <span className={` ${(props.saved && props.movies.length === 0) ? 'card-list__no-saved' : 'no-display'}`}>Вы пока что ничего не добавили в избранное</span>
-            <span className={`${props.keySearchForm ? 'card-list__error' : 'no-display'}`}>Введите ключевое слово в поисковую строку</span>
+            {/*<span className={`${  'card-list__error' : 'no-display'}`}>Введите ключевое слово в поисковую строку</span>*/}
             <ul className="card-list__list">
-
                 {displayedMovies?.map((movie) => {
                         return (
                             <MoviesCard

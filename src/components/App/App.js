@@ -32,7 +32,7 @@ function App() {
     const [isSaving, setIsSaving] = React.useState(false);
     // const [errorKeySearchForm, setErrorKeySearchForm] = useState(false);
     const isLoggedIn = localStorage.getItem('loggedIn');
-
+    const ShortMovie = 40;
 
     const history = useHistory();
     const location = useLocation();
@@ -133,7 +133,7 @@ function App() {
 
                 if(isShortMoviesChecked) {
 
-                    if(movie.duration <= 40) {
+                    if(movie.duration <= ShortMovie) {
                         return filteredMovies.push(movie);
                     }
                     return
@@ -150,6 +150,7 @@ function App() {
         const allSavedMovies = JSON.parse(localStorage.getItem('savedMovies'));
         const searchSavedResult = handleSearchMovies(allSavedMovies, keyWord);
         setSavedMovies(searchSavedResult);
+        // return console.log(allSavedMovies, '1234')
     }
 
     function searchMovies(keyWord) {

@@ -37,13 +37,12 @@ function MoviesCard(props) {
     }
 
     function handleLikeButtonCLick() {
-            props.onMovieSave(movie);
-            setIsSaved(true);
+        props.onMovieSave(movie);
+        setIsSaved(true);
     }
 
-    function handleDisLike() {
-        setIsSaved(false);
-        console.log(currentMovie._id)
+    function handleDisLike(e) {
+        setIsSaved(!isSaved);
         props.onDeleteMovie(currentMovie._id);
     }
 
