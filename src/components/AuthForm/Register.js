@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {useFormWithValidation} from "../../hooks/useForm";
 
 import "./AuthForm.css"
@@ -20,34 +20,34 @@ function Register(props) {
         <section className="auth-form register">
             <form className="register__form auth-form__form" onSubmit={handleRegister}>
                 <div>
-                    <div className='header__logo auth-form__logo' />
+                    <NavLink to='/'><div className='header__logo auth-form__logo' /></NavLink>
                     <h2 className="register__title auth-form__title">Добро пожаловать!</h2>
                 </div>
                 <fieldset className="register__fields auth-form__fields">
                     <p className="register__input-name auth-form__description">Имя</p>
-                    <input type="text" 
-                    name="name" 
+                    <input type="text"
+                    name="name"
                     pattern="[а-яА-Яa-zA-ZёË\- ]{1,}" className="register__input auth-form__input"
-                    value={values.name || ''} 
+                    value={values.name || ''}
                     onChange={handleChange}
-                    required 
+                    required
                     disabled={props.isSaving}/>
                     <span className="register__error auth-form__error">{errors.name}</span>
                     <p className="register__input-name auth-form__input-name">E-mail</p>
                     <input type="email" name="email" className="register__input auth-form__input"
-                    value={values.email || ''} 
+                    value={values.email || ''}
                     onChange={handleChange}
                     required
                      disabled={props.isSaving}/>
                     <span className="register__error auth-form__error">{errors.email}</span>
                     <p className="register__input-name auth-form__input-name">Пароль</p>
-                    <input 
-                    type="password" 
+                    <input
+                    type="password"
                     name="password"
                     className="register__input auth-form__input"
-                    value={values.password || ''} 
+                    value={values.password || ''}
                     onChange={handleChange}
-                    required minLength="8" 
+                    required minLength="8"
                     disabled={props.isSaving}/>
                     <span className="register__error auth-form__error">{errors.password}</span>
                 </fieldset>

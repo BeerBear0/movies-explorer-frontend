@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import React from "react";
 import {useFormWithValidation} from "../../hooks/useForm";
 
@@ -15,7 +15,7 @@ function Login(props) {
 
     return (
         <section className="auth-form login">
-            <div className='header__logo auth-form__logo' />
+            <NavLink to='/'><div className='header__logo auth-form__logo' /></NavLink>
             <h2 className="auth-form__title">Рады видеть!</h2>
             <form className="login__form" onSubmit={handleLogin} >
                 <fieldset className="login__fields auth-form__fields">
