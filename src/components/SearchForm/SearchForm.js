@@ -1,6 +1,6 @@
 import './SearchForm.css';
-// import search__icon from '../../images/search__icon.svg';
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+
+
 import React from "react";
 
 function SearchForm(props) {
@@ -28,6 +28,7 @@ function SearchForm(props) {
             <form
                 className='search-form__container'
                 onSubmit={props.saved ? handleSearchSavedMovies : handleSearchMovies}
+                noValidate
             >
                 <div className='search-form__icon-input' />
                 <input

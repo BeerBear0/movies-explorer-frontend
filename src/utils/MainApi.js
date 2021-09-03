@@ -1,5 +1,15 @@
 const BASE_URL = 'https://api.movies.nikko.nomoredomains.monster';
 // const BASE_URL = 'http://localhost:3000';
+
+function checkResponse(res) {
+    if(res.ok) {
+       return  res.json();
+    }
+    else {
+        return Promise.reject(`Ошибка ${res.status}`)
+    }
+}
+
 export function register (name, password, email) {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
@@ -15,7 +25,7 @@ export function register (name, password, email) {
             "email": email
         })
     })
-        .then((res) => res.json())
+        .then(checkResponse)
 }
 
 export function authorize (password, email) {
@@ -33,7 +43,7 @@ export function authorize (password, email) {
         credentials: 'include',
 
     })
-        .then((response => response.json()))
+        .then(checkResponse)
         .then((data) => {
             if (data.token){
                 localStorage.setItem('token', data.token);
@@ -54,8 +64,8 @@ export function getUserData(token) {
 
         // mode: "no-cors",
     })
-        .then(res => res.json())
-        .then(data => data)
+        .then(checkResponse)
+        // .then(data => data)
 }
 
 export function editUserData(token, name, email) {
@@ -74,8 +84,8 @@ export function editUserData(token, name, email) {
 
         // mode: "no-cors",
     })
-        .then(res => res.json())
-        .then(data => data)
+        .then(checkResponse)
+        // .then(data => data)
 }
 
 export function getSavedMovies(token) {
@@ -90,8 +100,8 @@ export function getSavedMovies(token) {
 
         // mode: "no-cors",
     })
-        .then(res => res.json())
-        .then(data => data)
+        .then(checkResponse)
+        // .then(data => data)
 }
 
 export function saveMovie(token, movie) {
@@ -120,8 +130,8 @@ export function saveMovie(token, movie) {
         credentials: 'include',
 
     })
-        .then(res => res.json())
-        .then(data => data)
+        .then(checkResponse)
+        // .then(data => data)
 }
 
 export function deleteMovie(token, movieId) {
@@ -135,6 +145,6 @@ export function deleteMovie(token, movieId) {
         credentials: 'include',
         // mode: "no-cors",
     })
-        .then(res => res.json())
-        .then(data => data)
+        .then(checkResponse)
+        // .then(data => data)
 }

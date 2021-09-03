@@ -6,10 +6,12 @@ import Promo from '../Promo/Promo';
 import Techs from '../Techs/Techs';
 import Footer from "../Footer/Footer";
 
-function Main ({isLoginIn}) {
+function Main (props) {
     return (
         <>
-            <Promo/>
+            <Promo
+                loggedIn={props.loggedIn}
+            />
             <AboutProject />
             <Techs />
             <AboutMe />

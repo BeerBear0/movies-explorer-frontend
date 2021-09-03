@@ -37,6 +37,9 @@
     margin-left: 20px;
     margin-right: 50px;
 }
+.navigation__link__div_logged {
+    width: 155px;
+}
 .navigation__link-style {
     font-weight: 500;
     font-size: 13px;

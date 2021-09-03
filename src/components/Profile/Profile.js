@@ -10,19 +10,18 @@ function Profile(props) {
 
     const currentUser = React.useContext(CurrentUserContext);
 
+    console.log(values);
     React.useEffect(() => {
         setValues(currentUser);
     }, [currentUser, setValues]);
 
     function handleEditProfileClick(e) {
         e.preventDefault();
-
         setIsFormDisabled(false);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-
         props.onChangeUser(values.name, values.email);
     }
 
@@ -50,7 +49,10 @@ function Profile(props) {
                     <fieldset className="profile__fields">
                         <div className="profile__form-input">
                             <p className="profile__form-input-name">Имя</p>
-                            <input type="text" name="name" pattern="[а-яА-Яa-zA-ZёË\- ]{1,}" className="profile__form-input-field"
+                            <input type="text"
+                                   name="name"
+                                   pattern="[а-яА-Яa-zA-ZёË\- ]{1,}"
+                                   className="profile__form-input-field"
                                    value={values.name || ''} onChange={handleChange}
                                    disabled={isFormDisabled}
                                    required />
@@ -58,10 +60,15 @@ function Profile(props) {
                         <span className="profile__input-error">{errors.name}</span>
                         <div className="profile__form-input">
                             <p className="profile__form-input-name">Email</p>
-                            <input type="email" name="email" className="profile__form-input-field"
-                                   value={values.email || ''} onChange={handleChange}
-                                   disabled={isFormDisabled}
-                                   required />
+                            <input
+                                type="email"
+                                name="email"
+                                className="profile__form-input-field"
+                                value={values.email || ''}
+                                // pattern='([A-z0-9_.-]{1,})@([A-z0-9_.-]{2,}).([A-z]{2,8})'
+                                onChange={handleChange}
+                                disabled={isFormDisabled}
+                                required />
                         </div>
                         <span className="profile__input-error">{errors.email}</span>
                     </fieldset>

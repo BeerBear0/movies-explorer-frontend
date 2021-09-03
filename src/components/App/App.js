@@ -30,12 +30,16 @@ function App() {
     const [isShortMoviesChecked, setIsShortMoviesChecked] = React.useState(false);
     const [allMovies, setAllMovies] = React.useState([]);
     const [isSaving, setIsSaving] = React.useState(false);
-
+    // const [errorKeySearchForm, setErrorKeySearchForm] = useState(false);
     const isLoggedIn = localStorage.getItem('loggedIn');
 
 
     const history = useHistory();
     const location = useLocation();
+
+    // function errorKeySearch() {
+    //     if()
+    // }
 
     function handleShortMoviesCheck(e) {
         setIsShortMoviesChecked(e.target.checked);
@@ -210,7 +214,6 @@ function App() {
     }
 
     function handleDeleteMovie(movieId) {
-
         mainApi.deleteMovie(token, movieId)
             .then(() => {
                 const newSavedMovies = savedMovies.filter((deletedMovie) => {return deletedMovie._id !== movieId})
@@ -275,10 +278,10 @@ function App() {
               <Route exact path="/">
                   {isLoggedIn ? <Redirect to="/"/> : <Redirect to="/sign-in" />}
               </Route>
-              <ProtectedRoute exact path="/movies" 
-                              loggedIn={isLoggedIn} 
-                              component={Movies} 
-                              movies={movies} 
+              <ProtectedRoute exact path="/movies"
+                              loggedIn={isLoggedIn}
+                              component={Movies}
+                              movies={movies}
                               onSearchMovies={searchMovies}
                               isSearching={isSearching} notFound={notFound} isErrorActive={isMoviesErrorActive} onMovieSave={handleSaveMovie}
                               onDeleteMovie={handleDeleteMovie}  savedMovies={savedMovies} onShortMoviesCheck={handleShortMoviesCheck}
@@ -290,18 +293,18 @@ function App() {
                               onChangeUser={handleEditUserInfo}
                               message={editProfileMessage} isUpdateSuccess={isUpdateSuccess} isSaving={isSaving}/>
               <Route exact path="/signup" >
-                  <Register
+                  {isLoggedIn ? <Redirect to='/'/> : <Register
                       onRegister={handleRegister}
                       errorMessage={registerErrorMessage}
                       onClear={clearAllErrorMessages}
-                      isSaving={isSaving}   />
+                      isSaving={isSaving}   />}
               </Route>
               <Route exact path="/signin" >
-                  <Login
+                  {isLoggedIn ? <Redirect to='/'/> : <Login
                       onLogin={handleLogin}
                       errorMessage={loginErrorMessage}
                       onClear={clearAllErrorMessages}
-                      isSaving={isSaving}   />
+                      isSaving={isSaving}   />}
               </Route>
               <Route path="*" >
                   <NotFound />
