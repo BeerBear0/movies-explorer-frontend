@@ -35,15 +35,25 @@ function MoviesCard(props) {
     function handleCardMouseOut() {
         setIsDeleteButtonVisible(false);
     }
-
-    function handleLikeButtonCLick() {
-        props.onMovieSave(movie);
-        setIsSaved(true);
-    }
-
-    function handleDisLike(e) {
-        setIsSaved(!isSaved);
-        props.onDeleteMovie(currentMovie._id);
+    //
+    // function handleLikeButtonCLick() {
+    //     props.onMovieSave(movie);
+    //     setIsSaved(true);
+    // }
+    //
+    // function handleDisLike() {
+    //     props.onDeleteMovie(currentMovie._id);
+    //     setIsSaved(false);
+    // }
+    function handleLikeBtn() {
+        if(isSaved) {
+            props.onDeleteMovie(currentMovie._id);
+            setIsSaved(false)
+        }
+        else{
+            props.onMovieSave(movie);
+            setIsSaved(true)
+        }
     }
 
 
@@ -70,9 +80,14 @@ function MoviesCard(props) {
                 <p className="card__title">{props.movie.nameRU}</p>
 
                 {props.saved ?
-                    <button className={`card__like-display-none ${isDeleteButtonVisible ? 'card__delete' : ''}`}
+                    <button
+                        type='button'
+                        className={`card__like-display-none ${isDeleteButtonVisible ? 'card__delete' : ''}`}
                         onClick={handleDeleteMovie} /> :
-                    <button className={`card__like ${isSaved ? 'card__like_active' : 'card__like'}`} onClick={isSaved ? handleDisLike : handleLikeButtonCLick} />}
+                    <button
+                        type='button'
+                        className={`card__like ${isSaved ? 'card__like_active' : 'card__like'}`}
+                        onClick={handleLikeBtn} />}
             </div>
             <p className="card__time">{editedDuration}</p>
         </li>
