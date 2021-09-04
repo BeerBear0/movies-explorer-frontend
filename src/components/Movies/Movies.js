@@ -28,6 +28,7 @@ function Movies(props) {
            savedMovies={props.savedMovies}
            isMobile={props.isMobile}
            isTablet={props.isTablet}
+           keyWordError={props.keyWordError}
        />
             <Footer />
         </>

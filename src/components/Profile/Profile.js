@@ -10,7 +10,6 @@ function Profile(props) {
 
     const currentUser = React.useContext(CurrentUserContext);
 
-    console.log(values);
     React.useEffect(() => {
         setValues(currentUser);
     }, [currentUser, setValues]);

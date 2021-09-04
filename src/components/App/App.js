@@ -30,16 +30,13 @@ function App() {
     const [isShortMoviesChecked, setIsShortMoviesChecked] = React.useState(false);
     const [allMovies, setAllMovies] = React.useState([]);
     const [isSaving, setIsSaving] = React.useState(false);
-    // const [errorKeySearchForm, setErrorKeySearchForm] = useState(false);
+    const [keyWordError, setKeyWordError] = React.useState(false);
+
     const isLoggedIn = localStorage.getItem('loggedIn');
-    const ShortMovie = 40;
 
     const history = useHistory();
     const location = useLocation();
 
-    // function errorKeySearch() {
-    //     if()
-    // }
 
     function handleShortMoviesCheck(e) {
         setIsShortMoviesChecked(e.target.checked);
@@ -111,9 +108,8 @@ function App() {
     }
 
     function handleSignOut() {
-        localStorage.removeItem('loggedIn');
-        localStorage.removeItem('token');
-        localStorage.removeItem('movies');
+        localStorage.clear()
+        setCurrentUser('')
         setMovies([]);
         setAllMovies([]);
         history.push('/');
@@ -127,13 +123,13 @@ function App() {
 
     function handleSearchMovies(movies, keyWord) {
         let filteredMovies = [];
-
         movies.forEach((movie) => {
-            if(movie.nameRU.indexOf(keyWord) > -1) {
-
+            if(movie.length === 0) {
+                setNotFound(true)
+            }
+            else if(movie.nameRU.indexOf(keyWord) > -1) {
                 if(isShortMoviesChecked) {
-
-                    if(movie.duration <= ShortMovie) {
+                    if(movie.duration <= 40) {
                         return filteredMovies.push(movie);
                     }
                     return
@@ -142,7 +138,6 @@ function App() {
                 return filteredMovies.push(movie);
                 }
         })
-
         return filteredMovies;
     }
 
@@ -150,7 +145,6 @@ function App() {
         const allSavedMovies = JSON.parse(localStorage.getItem('savedMovies'));
         const searchSavedResult = handleSearchMovies(allSavedMovies, keyWord);
         setSavedMovies(searchSavedResult);
-        // return console.log(allSavedMovies, '1234')
     }
 
     function searchMovies(keyWord) {
@@ -158,38 +152,51 @@ function App() {
         setMovies([]);
         setNotFound(false);
         setIsMoviesErrorActive(false);
+        setKeyWordError(false);
 
-            if(allMovies.length === 0) {
-                moviesApi.getMovies()
-                    .then((movies) => {
-                        setAllMovies(movies)
-                        const searchResult = handleSearchMovies(movies, keyWord);
+        if(keyWord === '') {
+            setKeyWordError(true);
+            setIsSearching(false )
+            setMovies([]);
+        }
+        else if(allMovies.length === 0) {
+            moviesApi.getMovies()
+                .then((movies) => {
+                    setAllMovies(movies)
+                    const searchResult = handleSearchMovies(movies, keyWord);
 
-                        if(searchResult.length === 0) {
-                            setNotFound(true);
-                            setMovies([]);
-                        } else {
-                            localStorage.setItem('movies', JSON.stringify(searchResult))
-                            setMovies(JSON.parse(localStorage.getItem('movies')));
-                        }
-                    })
-                    .catch(() => {
-                        setIsMoviesErrorActive(true);
+                    if(searchResult.length === 0) {
+                        setNotFound(true);
                         setMovies([]);
-                    })
-                    .finally(() => {
-                        setIsSearching(false);
-                        setIsShortMoviesChecked(false);
-                    })
+                    }
+
+                    else {
+                        localStorage.setItem('movies', JSON.stringify(searchResult))
+                        setMovies(JSON.parse(localStorage.getItem('movies')));
+
+                    }
+                })
+                .catch(() => {
+                    setIsMoviesErrorActive(true);
+                    setMovies([]);
+                })
+                .finally(() => {
+                    setIsSearching(false);
+                    setIsShortMoviesChecked(false);
+                })
             } else {
                 const searchResult = handleSearchMovies(allMovies, keyWord);
-
+                if(keyWord === '') {
+                    setKeyWordError(true);
+                    setMovies([]);
+                }
                 if(searchResult.length === 0) {
                     setNotFound(true);
                     setMovies([]);
                     setIsSearching(false);
                     setIsShortMoviesChecked(false);
-                } else if(searchResult.length !== 0) {
+                }
+                else if(searchResult.length !== 0) {
                     localStorage.setItem('movies', JSON.stringify(searchResult));
                     setMovies(JSON.parse(localStorage.getItem('movies')));
                     setIsSearching(false);
@@ -229,9 +236,9 @@ function App() {
     React.useEffect(() => {
 
         function checkToken() {
-
-            if(localStorage.getItem('token')) {
-                const token = localStorage.getItem('token');
+            const token = localStorage.getItem('token');
+            if(token) {
+                // const token = localStorage.getItem('token');
                 const searchedMovies = JSON.parse(localStorage.getItem('movies'));
 
                 if(token) {
@@ -284,15 +291,32 @@ function App() {
                               component={Movies}
                               movies={movies}
                               onSearchMovies={searchMovies}
-                              isSearching={isSearching} notFound={notFound} isErrorActive={isMoviesErrorActive} onMovieSave={handleSaveMovie}
-                              onDeleteMovie={handleDeleteMovie}  savedMovies={savedMovies} onShortMoviesCheck={handleShortMoviesCheck}
-                              isShortMoviesChecked={isShortMoviesChecked}  />
-              <ProtectedRoute exact path="/saved-movies" loggedIn={isLoggedIn} component={SavedMovies} movies={savedMovies}
-                              onDeleteMovie={handleDeleteMovie} onSearchSavedMovies={searchSavedMovies}
-                              onShortMoviesCheck={handleShortMoviesCheck} isShortMoviesChecked={isShortMoviesChecked}/>
-              <ProtectedRoute exact path="/profile" loggedIn={isLoggedIn} component={Profile} onSignOut={handleSignOut}
+                              isSearching={isSearching}
+                              notFound={notFound}
+                              isErrorActive={isMoviesErrorActive}
+                              onMovieSave={handleSaveMovie}
+                              onDeleteMovie={handleDeleteMovie}
+                              savedMovies={savedMovies}
+                              onShortMoviesCheck={handleShortMoviesCheck}
+                              isShortMoviesChecked={isShortMoviesChecked}
+                              keyWordError={keyWordError}
+              />
+              <ProtectedRoute exact path="/saved-movies"
+                              loggedIn={isLoggedIn}
+                              component={SavedMovies}
+                              movies={savedMovies}
+                              onDeleteMovie={handleDeleteMovie}
+                              onSearchSavedMovies={searchSavedMovies}
+                              onShortMoviesCheck={handleShortMoviesCheck}
+                              isShortMoviesChecked={isShortMoviesChecked}/>
+              <ProtectedRoute exact path="/profile"
+                              loggedIn={isLoggedIn}
+                              component={Profile}
+                              onSignOut={handleSignOut}
                               onChangeUser={handleEditUserInfo}
-                              message={editProfileMessage} isUpdateSuccess={isUpdateSuccess} isSaving={isSaving}/>
+                              message={editProfileMessage}
+                              isUpdateSuccess={isUpdateSuccess}
+                              isSaving={isSaving}/>
               <Route exact path="/signup" >
                   {isLoggedIn ? <Redirect to='/'/> : <Register
                       onRegister={handleRegister}

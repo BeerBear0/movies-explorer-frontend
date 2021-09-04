@@ -46,6 +46,7 @@ function MoviesCard(props) {
         props.onDeleteMovie(currentMovie._id);
     }
 
+
     function handleDeleteMovie() {
         props.onDeleteMovie(props.movie._id);
         setIsSaved(false);
@@ -61,7 +62,7 @@ function MoviesCard(props) {
 
     return (
         <li className="card">
-            <a href={props.saved ? props.movie.trailer : props.movie.trailerLink} className="movies__trailer-link">
+            <a target='_blank' href={props.saved ? props.movie.trailer : props.movie.trailerLink} className="movies__trailer-link">
                 <img alt={props.movie.nameRU} src={props.saved ? props.movie.image : image} className="card__image"/>
             </a>
 
