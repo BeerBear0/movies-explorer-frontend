@@ -34,11 +34,15 @@ function Register(props) {
                     disabled={props.isSaving}/>
                     <span className="register__error auth-form__error">{errors.name}</span>
                     <p className="register__input-name auth-form__input-name">E-mail</p>
-                    <input type="email" name="email" className="register__input auth-form__input"
-                    value={values.email || ''}
-                    onChange={handleChange}
-                    required
-                     disabled={props.isSaving}/>
+                    <input
+                        type="email"
+                        name="email"
+                        pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$"
+                        className="register__input auth-form__input"
+                        value={values.email || ''}
+                        onChange={handleChange}
+                        required
+                        disabled={props.isSaving}/>
                     <span className="register__error auth-form__error">{errors.email}</span>
                     <p className="register__input-name auth-form__input-name">Пароль</p>
                     <input

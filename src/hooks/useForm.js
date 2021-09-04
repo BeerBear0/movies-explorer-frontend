@@ -6,7 +6,6 @@ export function useFormWithValidation() {
     const [isFormValid, setIsFormValid] = React.useState(false);
 
     function handleChange(e) {
-
         const input = e.target;
         const name = input.name;
         const value = input.value;
