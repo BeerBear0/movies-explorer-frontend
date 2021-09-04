@@ -5,7 +5,7 @@ import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
-import {Redirect, Route, Switch, useHistory, useLocation} from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import Register from '../AuthForm/Register';
 import Login from '../AuthForm/Login';
 import NotFound from '../NotFound/NotFound';
@@ -21,7 +21,7 @@ function App() {
     const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
     const [isUpdateSuccess, setIsUpdateSuccess] = React.useState(true);
     const [token, setToken] = React.useState('');
-    const [currentUser, setCurrentUser] = React.useState({});
+    let [currentUser, setCurrentUser] = React.useState({});
     const [movies, setMovies] = React.useState([]);
     const [isSearching, setIsSearching] = React.useState(false);
     const [notFound, setNotFound] = React.useState(false);
@@ -44,22 +44,26 @@ function App() {
 
     function handleLogin(password, email) {
         setIsSaving(true);
-
         mainApi.authorize(password, email)
             .then((data) => {
                 if(data.token) {
                     localStorage.setItem('loggedIn', 'true');
                     setLoginErrorMessage('');
                     history.push('/movies');
-                } else if(data.error === 'Bad Request') {
+                }
+                else if(data.error === 'Bad Request') {
                     setLoginErrorMessage('Введены невалидные данные');
-                } else if(data.message) {
+                }
+                else if(data.message) {
                     setLoginErrorMessage(data.message);
                 }
             })
             .catch(() => {
                 setLoginErrorMessage('Что-то пошло не так...');
 
+            })
+            .then(() => {
+                checkToken()
             })
             .finally(() => {
                 setIsSaving(false);
@@ -71,11 +75,13 @@ function App() {
         mainApi.register(name, password, email)
             .then((res) => {
                 if(res.user) {
-                    setRegisterErrorMessage('')
+                    setRegisterErrorMessage('');
                     handleLogin(password, email);
-                } else if(res.error === 'Bad Request') {
+                }
+                else if(res.error === 'Bad Request') {
                     setRegisterErrorMessage('Введены невалидные данные');
-                } else if(res.message) {
+                }
+                else if(res.message) {
                     setRegisterErrorMessage(res.message);
                 }
             })
@@ -235,38 +241,51 @@ function App() {
                 console.log(`Ошибка ${err}, попробуйте еще раз`);
             })
     }
+    function getUserInfo() {
 
-    React.useEffect(() => {
-
-        function checkToken() {
-            const token = localStorage.getItem('token');
-            if(token) {
-                // const token = localStorage.getItem('token');
-                const searchedMovies = JSON.parse(localStorage.getItem('movies'));
-
-                if(token) {
-                    Promise.all([mainApi.getUserData(token), mainApi.getSavedMovies(token)])
-                        .then(([userData, movies]) => {
-                            setToken(token);
-                            setCurrentUser({
-                                id: userData._id,
-                                email: userData.email,
-                                name: userData.name
-                            });
-                            const films = [...savedMovies, movies];
-                            localStorage.setItem('savedMovies', JSON.stringify(films));
-                            setSavedMovies(prevState => ([...prevState, movies]));
-                            setMovies(searchedMovies);
-                            localStorage.setItem('loggedIn', 'true');
-                            setIsUpdateSuccess(true)
-                        })
-                        .catch((err) => {
-                            console.log(`Ошибка ${err}, попробуйте еще раз`);
-                            }
-                        )
+        mainApi.getUserData(token)
+            .then(res => {
+                setToken(token)
+                currentUser = {
+                    _id: res._id,
+                    name: res.name,
+                    email: res.email,
                 }
+                setCurrentUser(currentUser);
+            })
+            .catch(err => console.log(`Ошибка ${err}`));
+    }
+
+    function checkToken() {
+        const token = localStorage.getItem('token');
+        if(token) {
+            // const token = localStorage.getItem('token');
+            const searchedMovies = JSON.parse(localStorage.getItem('movies'));
+
+            if(token) {
+                Promise.all([mainApi.getUserData(token), mainApi.getSavedMovies(token)])
+                    .then(([userData, movies]) => {
+                        setToken(token);
+                        setCurrentUser({
+                            id: userData._id,
+                            email: userData.email,
+                            name: userData.name
+                        });
+                        const films = [...savedMovies, movies];
+                        localStorage.setItem('savedMovies', JSON.stringify(films));
+                        setSavedMovies(prevState => ([...prevState, movies]));
+                        setMovies(searchedMovies);
+                        localStorage.setItem('loggedIn', 'true');
+                        setIsUpdateSuccess(true)
+                    })
+                    .catch((err) => {
+                            console.log(`Ошибка ${err}, попробуйте еще раз`);
+                        }
+                    )
             }
         }
+    }
+    React.useEffect(() => {
         checkToken();
 
     }, [history, isLoggedIn])
