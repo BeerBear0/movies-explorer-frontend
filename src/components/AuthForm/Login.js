@@ -7,9 +7,7 @@ function Login(props) {
 
     function handleLogin(e) {
         e.preventDefault();
-
         props.onLogin(values.password, values.email);
-
         props.onClear();
     }
 
@@ -24,6 +22,7 @@ function Login(props) {
                         className="auth-form__input auth-form__input_login_email"
                         type="email"
                         name="email"
+                        pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$"
                         placeholder="Введите email"
                         value={values.email || ''}
                         onChange={handleChange}
@@ -32,9 +31,13 @@ function Login(props) {
                     />
                     <span className="login__error auth-form__error">{errors.email}</span>
                     <p className="login__input-name auth-form__input-name">Пароль</p>
-                    <input type="password" name="password" className="login__input auth-form__input"
-                           value={values.password || ''} onChange={handleChange}
-                           required minLength="8" disabled={props.isSaving}/>
+                    <input type="password"
+                           name="password"
+                           className="login__input auth-form__input"
+                           value={values.password || ''}
+                           onChange={handleChange}
+                           required minLength="8"
+                           disabled={props.isSaving}/>
                     <span className="login__error auth-form__error">{errors.password}</span>
                 </fieldset>
                 <span className="login__submit-error auth-form__submit-error">{props.errorMessage}</span>

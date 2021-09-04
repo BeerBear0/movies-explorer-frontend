@@ -5,10 +5,13 @@ import Header from "../Header/Header";
 import {useFormWithValidation} from "../../hooks/useForm";
 
 function Profile(props) {
-    const {values, setValues, handleChange, errors, isFormValid} = useFormWithValidation();
-    const [isFormDisabled, setIsFormDisabled] = React.useState(true);
-
     const currentUser = React.useContext(CurrentUserContext);
+
+    const {values, setValues, handleChange, errors, isFormValid} = useFormWithValidation({
+        name: currentUser.name,
+        email: currentUser.email
+    });
+    const [isFormDisabled, setIsFormDisabled] = React.useState(true);
 
     React.useEffect(() => {
         setValues(currentUser);
@@ -62,9 +65,9 @@ function Profile(props) {
                             <input
                                 type="email"
                                 name="email"
+                                pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$"
                                 className="profile__form-input-field"
                                 value={values.email || ''}
-                                // pattern='([A-z0-9_.-]{1,})@([A-z0-9_.-]{2,}).([A-z]{2,8})'
                                 onChange={handleChange}
                                 disabled={isFormDisabled}
                                 required />

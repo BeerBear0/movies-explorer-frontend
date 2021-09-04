@@ -21,7 +21,7 @@ function App() {
     const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
     const [isUpdateSuccess, setIsUpdateSuccess] = React.useState(true);
     const [token, setToken] = React.useState('');
-    const [currentUser, setCurrentUser] = React.useState('');
+    const [currentUser, setCurrentUser] = React.useState({});
     const [movies, setMovies] = React.useState([]);
     const [isSearching, setIsSearching] = React.useState(false);
     const [notFound, setNotFound] = React.useState(false);
@@ -88,11 +88,14 @@ function App() {
     }
 
     function handleEditUserInfo(name, email) {
-
         mainApi.editUserData(token, name, email)
             .then((newUser) => {
                 if(newUser._id) {
-                    setCurrentUser(newUser);
+                    console.log(newUser)
+                    setCurrentUser({
+                        name: newUser.name,
+                        email: newUser.email
+                    });
                     setIsUpdateSuccess(true);
                     setEditProfileMessage('Профиль обновлен успешно!');
                 } else if(newUser.message){
@@ -109,7 +112,7 @@ function App() {
 
     function handleSignOut() {
         localStorage.clear()
-        setCurrentUser('')
+        setCurrentUser({})
         setMovies([]);
         setAllMovies([]);
         history.push('/');
@@ -244,13 +247,18 @@ function App() {
                 if(token) {
                     Promise.all([mainApi.getUserData(token), mainApi.getSavedMovies(token)])
                         .then(([userData, movies]) => {
-                            setCurrentUser(userData);
-                            setToken(localStorage.getItem('token'));
+                            setToken(token);
+                            setCurrentUser({
+                                id: userData._id,
+                                email: userData.email,
+                                name: userData.name
+                            });
                             const films = [...savedMovies, movies];
                             localStorage.setItem('savedMovies', JSON.stringify(films));
                             setSavedMovies(prevState => ([...prevState, movies]));
                             setMovies(searchedMovies);
                             localStorage.setItem('loggedIn', 'true');
+                            setIsUpdateSuccess(true)
                         })
                         .catch((err) => {
                             console.log(`Ошибка ${err}, попробуйте еще раз`);

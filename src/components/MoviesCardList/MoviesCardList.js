@@ -3,7 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
 import React, { useState, useEffect } from "react";
 
-function    MoviesCardList(props) {
+function MoviesCardList(props) {
 
     const [initialCardsNumber, setInitialCardsNumber] = useState(() => {
         const windowSize = window.innerWidth;
