@@ -1,5 +1,12 @@
 export const BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 
+export function checkResponse(res) {
+    if(res.ok) {
+        res.json()
+    }
+    return Promise.reject(`Ошибка ${res.status}`)
+}
+
 export function getMovies() {
     return fetch(`${BASE_URL}`, {
         method: 'GET',
@@ -8,6 +15,5 @@ export function getMovies() {
             'Content-Type': 'application/json',
         }
     })
-        .then(res => res.json())
-        .then(data => data)
+        .then(checkResponse)
 }

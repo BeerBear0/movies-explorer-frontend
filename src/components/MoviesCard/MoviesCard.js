@@ -1,6 +1,5 @@
 import './MoviesCard.css';
 import React from "react";
-import {useLocation} from 'react-router-dom';
 import movieImage from '../../images/movieImage.jpeg';
 
 function MoviesCard(props) {
@@ -26,14 +25,7 @@ function MoviesCard(props) {
     const image = `${props.movie.image === null ? `${movieImage}` : `https://api.nomoreparties.co${props.movie.image?.url}`}`;
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
     const currentMovie = savedMovies.find((movie) => movie.nameRU === props.movie.nameRU);
-    // console.log(savedMovies)
-    const arraySaveMoviesId = savedMovies.map(item => item.movieId)
-    // console.log(arraySaveMoviesId, '1234')
-    // console.log(props.movies)
-    // console.log((props.movies.movie.movie._id, 'id'))
-    // console.log(props.movies, 'movies')
-    // console.log(savedMovies, 'savedMovies')
-    // console.log(props.savedMovies, 'props.SavedMovies')
+
 
     React.useEffect(() => {
         for(let i = 0; i < props.movie.length; i++) {
