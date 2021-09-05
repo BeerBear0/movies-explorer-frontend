@@ -15,6 +15,12 @@
     text-decoration: none;
 
 }
+.color__white {
+    color: white;
+}
+.color__black {
+    color: black;
+}
 .navigation__link_loggedin {
     color: black;
     margin: 0;
@@ -53,10 +59,9 @@
 }
 .navigation__account {
     text-decoration: none;
-    color: black;
     text-align: center;
     font-style: normal;
-    margin: 21px 13px 21px auto;
+    margin: 21px 13px 21px 0;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
@@ -93,3 +98,4 @@
         line-height: 16px;
     }
 }
+
