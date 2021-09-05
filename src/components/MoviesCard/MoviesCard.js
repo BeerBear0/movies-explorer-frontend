@@ -54,6 +54,14 @@ function MoviesCard(props) {
         setIsSaved(false);
     }
 
+    React.useEffect(() => {
+        if(currentMovie) {
+            setIsSaved(true)
+        }
+
+    }, [currentMovie, location])
+
+
     return (
         <li className="card">
             <a target='_blank' href={props.saved ? props.movie.trailer : props.movie.trailerLink} className="movies__trailer-link">

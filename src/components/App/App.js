@@ -241,6 +241,20 @@ function App() {
                 console.log(`Ошибка ${err}, попробуйте еще раз`);
             })
     }
+    function getUserInfo() {
+
+        mainApi.getUserData(token)
+            .then(res => {
+                setToken(token)
+                currentUser = {
+                    _id: res._id,
+                    name: res.name,
+                    email: res.email,
+                }
+                setCurrentUser(currentUser);
+            })
+            .catch(err => console.log(`Ошибка ${err}`));
+    }
 
     function checkToken() {
         const token = localStorage.getItem('token');
@@ -335,17 +349,14 @@ function App() {
                       onRegister={handleRegister}
                       errorMessage={registerErrorMessage}
                       onClear={clearAllErrorMessages}
-                      isSaving={isSaving}
-                      isSearching={isSearching}/>}
+                      isSaving={isSaving}   />}
               </Route>
               <Route exact path="/signin" >
                   {isLoggedIn ? <Redirect to='/'/> : <Login
                       onLogin={handleLogin}
                       errorMessage={loginErrorMessage}
                       onClear={clearAllErrorMessages}
-                      isSaving={isSaving}
-                      isSearching={isSearching}
-                  />}
+                      isSaving={isSaving}   />}
               </Route>
               <Route path="*" >
                   <NotFound />
