@@ -4,7 +4,6 @@ import Preloader from "../Preloader/Preloader";
 import React, { useState, useEffect } from "react";
 
 function MoviesCardList(props) {
-
     const [initialCardsNumber, setInitialCardsNumber] = useState(() => {
         const windowSize = window.innerWidth;
         if(windowSize < 720) {
@@ -64,7 +63,8 @@ function MoviesCardList(props) {
                         return (
                             <MoviesCard
                                 movie={movie}
-                                key={props.saved ? movie.movieId : movie.id}
+                                movies={props.movies}
+                                key={props.saved ? movie.movieId : movie._id}
                                 saved={props.saved}
                                 onMovieSave={props.onMovieSave}
                                 onDeleteMovie={props.onDeleteMovie}

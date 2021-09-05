@@ -23,6 +23,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MoviesCard/MoviesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MoviesCard/MoviesCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MoviesCardList/MoviesCardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MoviesCardList/MoviesCardList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SavedMovies/SavedMovies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SavedMovies/SavedMovies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/MainApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/MainApi.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +64,7 @@
       <workItem from="1630488761679" duration="9883000" />
       <workItem from="1630633859898" duration="12287000" />
       <workItem from="1630710825352" duration="16236000" />
-      <workItem from="1630776490613" duration="15441000" />
+      <workItem from="1630776490613" duration="23807000" />
     </task>
     <servers />
   </component>
@@ -81,10 +84,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1630498797523">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1630810101392">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1630498797523" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1630810101392" />
     <state x="49" y="102" width="585" height="530" key="find.popup" timestamp="1630782379741">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

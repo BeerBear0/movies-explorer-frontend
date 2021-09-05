@@ -26,8 +26,28 @@ function MoviesCard(props) {
     const image = `${props.movie.image === null ? `${movieImage}` : `https://api.nomoreparties.co${props.movie.image?.url}`}`;
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
     const currentMovie = savedMovies.find((movie) => movie.nameRU === props.movie.nameRU);
+    // console.log(savedMovies)
+    const arraySaveMoviesId = savedMovies.map(item => item.movieId)
+    // console.log(arraySaveMoviesId, '1234')
+    // console.log(props.movies)
+    // console.log((props.movies.movie.movie._id, 'id'))
+    // console.log(props.movies, 'movies')
+    // console.log(savedMovies, 'savedMovies')
+    // console.log(props.savedMovies, 'props.SavedMovies')
 
-    const location = useLocation();
+    React.useEffect(() => {
+        for(let i = 0; i < props.movie.length; i++) {
+            for(let j = 0; j < savedMovies.length; j++) {
+                console.log(props.movie[0])
+                if(props.movie[i]._id === savedMovies[j].movieId) {
+                    console.log('O DA SYKA')
+                }
+                else {
+                    console.log('PIZDEC')
+                }
+            }
+        }
+    })
 
     function handleCardMouseOver() {
         setIsDeleteButtonVisible(true);
@@ -40,11 +60,11 @@ function MoviesCard(props) {
     function handleLikeBtn() {
         if(isSaved) {
             props.onDeleteMovie(currentMovie._id);
-            // setIsSaved(false)
+            setIsSaved(false)
         }
         else{
             props.onMovieSave(movie);
-            // setIsSaved(true)
+            setIsSaved(true)
         }
     }
 
@@ -55,15 +75,10 @@ function MoviesCard(props) {
     }
 
     React.useEffect(() => {
-        if(currentMovie) {
+        if (currentMovie) {
             setIsSaved(true)
         }
-        else{
-            setIsSaved(false)
-        }
-
-    }, [currentMovie, location])
-
+    })
 
     return (
         <li className="card">

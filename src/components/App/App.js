@@ -262,7 +262,7 @@ function App() {
                         setSavedMovies(prevState => ([...prevState, movies]));
                         setMovies(searchedMovies);
                         localStorage.setItem('loggedIn', 'true');
-                        setIsUpdateSuccess(true)
+                        // setIsUpdateSuccess(true)
                     })
                     .catch((err) => {
                             console.log(`Ошибка ${err}, попробуйте еще раз`);
@@ -273,7 +273,7 @@ function App() {
     }
     React.useEffect(() => {
         checkToken();
-
+        setIsUpdateSuccess(true)
     }, [history, isLoggedIn])
 
     React.useEffect(() => {
@@ -285,6 +285,8 @@ function App() {
                 setSavedMovies(res);
             })
     }, [location]);
+
+
 
   return (
 

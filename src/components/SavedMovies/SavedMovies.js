@@ -14,9 +14,13 @@ function SavedMovies(props) {
                 headerHref2='/saved-movies'/>
             <SearchForm
                 onSearchSavedMovies={props.onSearchSavedMovies}
-                saved={true} onShortMoviesCheck={props.onShortMoviesCheck}
+                saved={true}
+                onShortMoviesCheck={props.onShortMoviesCheck}
                 isChecked={props.isShortMoviesChecked}/>
-            <MoviesCardList saved={true} movies={props.movies} onDeleteMovie={props.onDeleteMovie} />
+            <MoviesCardList
+                saved={true}
+                movies={props.movies}
+                onDeleteMovie={props.onDeleteMovie} />
             <Footer />
         </>
     )
