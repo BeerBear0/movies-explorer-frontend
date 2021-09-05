@@ -7,10 +7,12 @@ import {useState} from "react";
 function Movies(props) {
     return (
         <>
-       <Header linkNum1='Фильмы'
-               linkNum2='Сохраненные фильмы'
-               headerHref1='/movies'
-               headerHref2='/saved-movies'/>
+       <Header
+           loggedIn={props.loggedIn}
+           linkNum1='Фильмы'
+           linkNum2='Сохраненные фильмы'
+           headerHref1='/movies'
+           headerHref2='/saved-movies'/>
        <SearchForm
            onSearchMovies={props.onSearchMovies}
            onShortMoviesCheck={props.onShortMoviesCheck}

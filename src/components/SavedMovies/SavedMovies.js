@@ -7,6 +7,7 @@ function SavedMovies(props) {
     return (
         <>
             <Header
+                loggedIn={props.loggedIn}
                 linkNum1='Фильмы'
                 linkNum2='Сохраненные фильмы'
                 headerHref1='/movies'

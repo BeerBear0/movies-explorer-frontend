@@ -7,6 +7,7 @@ function MoviesCard(props) {
     const [isDeleteButtonVisible, setIsDeleteButtonVisible] = React.useState(false);
     const [isSaved, setIsSaved] = React.useState(false);
 
+
     const movie = {
         country : props.movie.country || 'Не указано',
         director: props.movie.director || 'Не указано',
@@ -35,16 +36,7 @@ function MoviesCard(props) {
     function handleCardMouseOut() {
         setIsDeleteButtonVisible(false);
     }
-    //
-    // function handleLikeButtonCLick() {
-    //     props.onMovieSave(movie);
-    //     setIsSaved(true);
-    // }
-    //
-    // function handleDisLike() {
-    //     props.onDeleteMovie(currentMovie._id);
-    //     setIsSaved(false);
-    // }
+
     function handleLikeBtn() {
         if(isSaved) {
             props.onDeleteMovie(currentMovie._id);
@@ -62,14 +54,6 @@ function MoviesCard(props) {
         setIsSaved(false);
     }
 
-    React.useEffect(() => {
-        if(currentMovie) {
-            setIsSaved(true)
-        }
-
-    }, [currentMovie, location])
-
-
     return (
         <li className="card">
             <a target='_blank' href={props.saved ? props.movie.trailer : props.movie.trailerLink} className="movies__trailer-link">
@@ -86,7 +70,7 @@ function MoviesCard(props) {
                         onClick={handleDeleteMovie} /> :
                     <button
                         type='button'
-                        className={`card__like ${isSaved ? 'card__like_active' : 'card__like'}`}
+                        className={`card__like ${isSaved ? 'card__like_active' : ''}`}
                         onClick={handleLikeBtn} />}
             </div>
             <p className="card__time">{editedDuration}</p>
