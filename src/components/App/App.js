@@ -32,6 +32,7 @@ function App() {
     const [isSaving, setIsSaving] = React.useState(false);
     const [keyWordError, setKeyWordError] = React.useState(false);
 
+    const ShortMovies = 40;
     const isLoggedIn = localStorage.getItem('loggedIn');
 
     const history = useHistory();
@@ -138,7 +139,7 @@ function App() {
             }
             else if(movie.nameRU.indexOf(keyWord) > -1) {
                 if(isShortMoviesChecked) {
-                    if(movie.duration <= 40) {
+                    if(movie.duration <= ShortMovies) {
                         return filteredMovies.push(movie);
                     }
                     return
@@ -272,6 +273,7 @@ function App() {
         }
     }
     React.useEffect(() => {
+        console.log(setIsUpdateSuccess)
         checkToken();
         setIsUpdateSuccess(true)
     }, [history, isLoggedIn])
