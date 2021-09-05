@@ -40,11 +40,11 @@ function MoviesCard(props) {
     function handleLikeBtn() {
         if(isSaved) {
             props.onDeleteMovie(currentMovie._id);
-            setIsSaved(false)
+            // setIsSaved(false)
         }
         else{
             props.onMovieSave(movie);
-            setIsSaved(true)
+            // setIsSaved(true)
         }
     }
 
@@ -57,6 +57,9 @@ function MoviesCard(props) {
     React.useEffect(() => {
         if(currentMovie) {
             setIsSaved(true)
+        }
+        else{
+            setIsSaved(false)
         }
 
     }, [currentMovie, location])
