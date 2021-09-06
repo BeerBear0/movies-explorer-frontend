@@ -26,21 +26,6 @@ function MoviesCard(props) {
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
     const currentMovie = savedMovies.find((movie) => movie.nameRU === props.movie.nameRU);
 
-
-    React.useEffect(() => {
-        for(let i = 0; i < props.movie.length; i++) {
-            for(let j = 0; j < savedMovies.length; j++) {
-                console.log(props.movie[0])
-                if(props.movie[i]._id === savedMovies[j].movieId) {
-                    console.log('O DA SYKA')
-                }
-                else {
-                    console.log('PIZDEC')
-                }
-            }
-        }
-    })
-
     function handleCardMouseOver() {
         setIsDeleteButtonVisible(true);
     }
@@ -70,7 +55,7 @@ function MoviesCard(props) {
         if (currentMovie) {
             setIsSaved(true)
         }
-    })
+    }, [currentMovie])
 
     return (
         <li className="card">
