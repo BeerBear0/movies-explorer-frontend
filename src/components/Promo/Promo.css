@@ -1,0 +1,107 @@
+.promo {
+    background-color: #073042;
+    /*padding-bottom: 122px;*/
+}
+.promo__container {
+    display: flex;
+    margin: 75px 70px 0 70px;
+    padding-bottom: 85px;
+}
+
+.promo__description {
+    /*width: 640px;*/
+    margin-right: auto;
+}
+.promo__image {
+    width: 310px;
+    height: 304px;
+    opacity: .8;
+    background-image: url("../../images/promo-image-min.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin: 0 0 auto auto;
+}
+.promo__info {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    width: 310px;
+    margin: 36px auto 156px 0;
+}
+.promo__title {
+    width: 590px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 58px;
+    text-align: left;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    margin: 0;
+}
+.promo__link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 10px 20px 10px 20px;
+    border: 1px solid white;
+    margin: 0;
+    width: 90px;
+}
+
+@media (max-width: 1030px) {
+    .promo {
+        padding: 0 50px 76px 50px;
+    }
+    .promo__image {
+        margin: 140px auto 48px auto;
+        grid-row: 1;
+    }
+    .promo__title {
+        margin: 0 auto 22px auto;
+        font-size: 40px;
+        line-height: 50px;
+        text-align: center;
+    }
+    .promo__info {
+        text-align: center;
+        margin: 0 auto 90px auto;
+    }
+    .promo__link {
+        margin: 0 auto;
+    }
+    .promo__description {
+        grid-row: 2;
+        margin: 0 auto;
+    }
+    .promo__container {
+        display: grid;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+}
+@media (max-width: 600px) {
+    .promo {
+        padding: 0 10px 30px 10px;
+    }
+    .promo__image {
+        width: 210px;
+        height: 204px;
+    }
+    .promo__title {
+        font-size: 30px;
+        line-height: 38px;
+        max-width: 300px;
+    }
+}
