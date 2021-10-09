@@ -32,13 +32,12 @@ function App() {
     const [isSaving, setIsSaving] = React.useState(false);
     const [keyWordError, setKeyWordError] = React.useState(false);
 
-    const ShortMovies = 40;
     const isLoggedIn = localStorage.getItem('loggedIn');
 
     const history = useHistory();
     const location = useLocation();
 
-
+    const ShortMovie = 40;
     function handleShortMoviesCheck(e) {
         setIsShortMoviesChecked(e.target.checked);
     }
@@ -139,7 +138,7 @@ function App() {
             }
             else if(movie.nameRU.indexOf(keyWord) > -1) {
                 if(isShortMoviesChecked) {
-                    if(movie.duration <= ShortMovies) {
+                    if(movie.duration <= ShortMovie) {
                         return filteredMovies.push(movie);
                     }
                     return
