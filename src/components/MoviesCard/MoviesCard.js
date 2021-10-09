@@ -23,9 +23,11 @@ function MoviesCard(props) {
 
     const editedDuration = `${Math.trunc(movie.duration/60)}ч${movie.duration % 60}м`;
     const image = `${props.movie.image === null ? `${movieImage}` : `https://api.nomoreparties.co${props.movie.image?.url}`}`;
+    const movies = JSON.parse(localStorage.getItem('movies'));
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
     const currentMovie = savedMovies.find((movie) => movie.nameRU === props.movie.nameRU);
 
+    console.log(movies)
     function handleCardMouseOver() {
         setIsDeleteButtonVisible(true);
     }
@@ -51,12 +53,24 @@ function MoviesCard(props) {
         setIsSaved(false);
     }
 
-    React.useEffect(() => {
-        if (currentMovie) {
-            setIsSaved(true)
-        }
-    }, [currentMovie])
+    // React.useEffect(() => {
+    //     if (currentMovie) {
+    //         setIsSaved(true)
+    //     }
+    // }, [savedMovies])
 
+    React.useEffect(() => {
+        console.log(props.movies, '1234')
+        for(let i = 0; i < movies.length; i++) {
+           if(movies[i].id === savedMovies._id) {
+               setIsSaved(true)
+               if(currentMovie) {
+                   setIsSaved(true)
+               }
+               console.log('yes')
+           }
+            }
+    }, [savedMovies, movies])
     return (
         <li className="card">
             <a target='_blank' href={props.saved ? props.movie.trailer : props.movie.trailerLink} className="movies__trailer-link">
